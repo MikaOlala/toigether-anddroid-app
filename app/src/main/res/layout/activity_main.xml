@@ -1,18 +1,546 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="37sp"
+            android:paddingHorizontal="14sp"
+            android:paddingVertical="8sp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/profileIcon"
+                android:layout_width="37sp"
+                android:layout_height="37sp"
+                android:background="#f0f0f0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Профиль"
+                android:textSize="7sp"
+                android:textStyle="bold"
+                android:layout_marginStart="6sp"
+                app:layout_constraintLeft_toRightOf="@+id/profileIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Интересные события"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="208sp"
+            android:src="@drawable/banner"
+            android:paddingHorizontal="21sp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="128sp"
+            android:layout_marginTop="11sp"
+            android:paddingHorizontal="18sp">
+
+            <TextView
+                android:id="@+id/categoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Категории"
+                android:textSize="14sp"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Все"
+                android:textSize="9sp"
+                android:textColor="@color/orange"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryTitle">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/wedding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="6sp"
+                            android:layout_marginHorizontal="3sp">
+                            <ImageView
+                                android:layout_width="106sp"
+                                android:layout_height="85sp"
+                                android:src="@drawable/wedding"/>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Свадьба"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="7sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="6sp"
+                            android:layout_marginHorizontal="3sp">
+                            <ImageView
+                                android:layout_width="106sp"
+                                android:layout_height="85sp"
+                                android:src="@drawable/birthday" />
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="День рождения"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="7sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/corporateParty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="6sp"
+                            android:layout_marginHorizontal="3sp">
+                            <ImageView
+                                android:layout_width="106sp"
+                                android:layout_height="85sp"
+                                android:src="@drawable/party"/>
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Корпоратив"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="7sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/teamBuilding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="6sp"
+                            android:layout_marginHorizontal="3sp">
+                            <ImageView
+                                android:layout_width="106sp"
+                                android:layout_height="85sp"
+                                android:src="@drawable/team_building"/>
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Тимбилдинг"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="7sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="196sp"
+            android:layout_marginTop="11sp"
+            android:paddingHorizontal="18sp">
+
+            <TextView
+                android:id="@+id/ratingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Топ рейтинг"
+                android:textSize="14sp"
+                android:elevation="5sp"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingTitle">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/organization_bn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/organizationPic"
+                            android:layout_width="214sp"
+                            android:layout_height="131sp"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="3sp"
+                            android:layout_marginHorizontal="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/organization_bm" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/organizationName"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="BN Event Organization"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="6sp"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic"/>
+                        <ImageView
+                            android:layout_width="13sp"
+                            android:layout_height="13sp"
+                            android:src="@drawable/heart"
+                            android:layout_marginEnd="2sp"
+                            android:layout_marginTop="6sp"
+                            app:layout_constraintRight_toLeftOf="@+id/organizationRate"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic"/>
+                        <TextView
+                            android:id="@+id/organizationRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9.8"
+                            android:textSize="9sp"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="6sp"
+                            android:layout_marginEnd="6sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic"/>
+                        <TextView
+                            android:id="@+id/organizationDesc"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="Some text here \nSome more line of text should be here"
+                            android:textSize="7sp"
+                            android:textColor="@color/gray"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationName"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/organization_bn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/organizationPic2"
+                            android:layout_width="214sp"
+                            android:layout_height="131sp"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="3sp"
+                            android:layout_marginHorizontal="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/organization_wedding" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/organizationName2"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="Wedding Organization Company"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="6sp"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic2"/>
+                        <ImageView
+                            android:layout_width="13sp"
+                            android:layout_height="13sp"
+                            android:src="@drawable/heart"
+                            android:layout_marginEnd="2sp"
+                            android:layout_marginTop="6sp"
+                            app:layout_constraintRight_toLeftOf="@+id/organizationRate2"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic2"/>
+                        <TextView
+                            android:id="@+id/organizationRate2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9.8"
+                            android:textSize="9sp"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="6sp"
+                            android:layout_marginEnd="6sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic2"/>
+                        <TextView
+                            android:id="@+id/organizationDesc2"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="Some text here \nSome more line of text should be here"
+                            android:textSize="7sp"
+                            android:textColor="@color/gray"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationName2"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="196sp"
+            android:layout_marginTop="11sp"
+            android:paddingHorizontal="18sp">
+
+            <TextView
+                android:id="@+id/recentlyRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Недавно смотрели"
+                android:textSize="14sp"
+                android:elevation="5sp"
+                android:textColor="@color/orange"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recentlyRow">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/organization_bn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/organizationPic3"
+                            android:layout_width="214sp"
+                            android:layout_height="131sp"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="3sp"
+                            android:layout_marginHorizontal="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/gravum" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/organizationName3"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="BN Event Organization"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="6sp"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic3"/>
+                        <ImageView
+                            android:layout_width="13sp"
+                            android:layout_height="13sp"
+                            android:src="@drawable/heart"
+                            android:layout_marginEnd="2sp"
+                            android:layout_marginTop="6sp"
+                            app:layout_constraintRight_toLeftOf="@+id/organizationRate3"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic3"/>
+                        <TextView
+                            android:id="@+id/organizationRate3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9.0"
+                            android:textSize="9sp"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="6sp"
+                            android:layout_marginEnd="6sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic3"/>
+                        <TextView
+                            android:id="@+id/organizationDesc3"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="Some text here \nSome more line of text should be here"
+                            android:textSize="7sp"
+                            android:textColor="@color/gray"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationName3"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/organization_bn4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/organizationPic4"
+                            android:layout_width="214sp"
+                            android:layout_height="131sp"
+                            android:elevation="4sp"
+                            app:cardElevation="4sp"
+                            app:cardCornerRadius="3sp"
+                            android:layout_marginHorizontal="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/org" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/organizationName4"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="Wedding Organization Company"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="6sp"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic4"/>
+                        <ImageView
+                            android:layout_width="13sp"
+                            android:layout_height="13sp"
+                            android:src="@drawable/heart"
+                            android:layout_marginEnd="2sp"
+                            android:layout_marginTop="6sp"
+                            app:layout_constraintRight_toLeftOf="@+id/organizationRate4"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic4"/>
+                        <TextView
+                            android:id="@+id/organizationRate4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8.3"
+                            android:textSize="9sp"
+                            android:textColor="@color/orange"
+                            android:layout_marginTop="6sp"
+                            android:layout_marginEnd="6sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationPic4"/>
+                        <TextView
+                            android:id="@+id/organizationDesc4"
+                            android:layout_width="180sp"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="Some text here \nSome more line of text should be here"
+                            android:textSize="7sp"
+                            android:textColor="@color/gray"
+                            android:layout_marginStart="6sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/organizationName4"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp">
+
+        </View>
+
+
+    </LinearLayout>
+</ScrollView>
