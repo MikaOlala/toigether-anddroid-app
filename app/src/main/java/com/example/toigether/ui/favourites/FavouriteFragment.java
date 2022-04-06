@@ -12,7 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.toigether.R;
+import com.example.toigether.items.Organization;
 import com.example.toigether.ui.favourites.FavouriteViewModel;
+
+import java.util.ArrayList;
 
 public class FavouriteFragment extends Fragment {
 
@@ -32,7 +35,11 @@ public class FavouriteFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
-        // TODO: Use the ViewModel
+
+        ArrayList<Organization> organizations = new ArrayList<>();
+        organizations.add(new Organization(1L, "BN Event organization", "BN organization - adorable organization which u would like bla bla", R.drawable.organization_bm));
+        organizations.add(new Organization(2L, "Gravum Event Masters", "We are adorable organization too, u would like us either a-la-la", R.drawable.gravum));
+        organizations.add(new Organization(3L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.org));
     }
 
 }
