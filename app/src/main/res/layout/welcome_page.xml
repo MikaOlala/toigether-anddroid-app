@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_blue"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/welcomeImage"
+        android:layout_width="316sp"
+        android:layout_height="316sp"
+        android:src="@drawable/welcome" />
+
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="225sp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_page_title"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        android:gravity="center"
+        android:layout_marginTop="67sp"/>
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="275sp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_page_text"
+        android:textSize="14sp"
+        android:textColor="@color/orange"
+        android:gravity="center"
+        android:layout_marginTop="18sp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/nextButton"
+        android:layout_width="140sp"
+        android:layout_height="38sp"
+        android:text="@string/next"
+        android:background="@drawable/welcome_page_button"
+        android:textSize="16sp"
+        android:textColor="@color/orange"
+        android:textAllCaps="false"
+        android:elevation="5sp"
+        android:layout_marginTop="33sp"/>
+</LinearLayout>

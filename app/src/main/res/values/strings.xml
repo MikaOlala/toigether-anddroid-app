@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">toigether</string>
+    <string name="welcome_page_title">Добро пожаловать в TOIGETHER!</string>
+    <string name="welcome_page_text">Наслаждайтесь удобным процессом организации самых важных мероприятий в вашей жизни!</string>
+    <string name="next">Далее</string>
 </resources>
