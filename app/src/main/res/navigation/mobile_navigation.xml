@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.toigether.MainActivity"
+        tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.example.toigether.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_meeting"
+        android:name="com.example.toigether.ui.meetings.MeetingFragment"
+        tools:layout="@layout/fragment_meeting" />
+
+    <fragment
+        android:id="@+id/navigation_favourite"
+        android:name="com.example.toigether.ui.favourites.FavouriteFragment"
+        tools:layout="@layout/fragment_favourite" />
+
+    <fragment
+        android:id="@+id/navigation_generation"
+        android:name="com.example.toigether.ui.generation.GenerationFragment"
+        tools:layout="@layout/fragment_generation" />
+</navigation>

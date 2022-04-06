@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="Главная" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_search"
+        android:title="Поиск" />
+
+    <item
+        android:id="@+id/navigation_meeting"
+        android:icon="@drawable/ic_meeting"
+        android:title="Встречи" />
+
+    <item
+        android:id="@+id/navigation_favourite"
+        android:icon="@drawable/ic_favourite"
+        android:title="Избранное" />
+
+    <item
+        android:id="@+id/navigation_generation"
+        android:icon="@drawable/ic_gift"
+        android:title="Создать подборку" />
+
+</menu>
