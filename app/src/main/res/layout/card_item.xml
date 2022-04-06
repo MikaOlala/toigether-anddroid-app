@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="101sp"
+    android:layout_marginBottom="15sp"
+    android:elevation="3sp"
+    app:cardElevation="3sp"
+    app:cardCornerRadius="6sp"
+    android:layout_marginHorizontal="3sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/almost_white">
+
+        <ImageView
+            android:id="@+id/organizationImg"
+            android:layout_width="161sp"
+            android:layout_height="match_parent"
+            android:src="@drawable/organization_bm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/textColumn"
+            android:layout_width="156sp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/organizationImg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="18sp">
+
+            <TextView
+                android:id="@+id/organizationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:text="BN Event organization"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/almost_black"
+                android:layout_marginBottom="6sp" />
+
+            <TextView
+                android:id="@+id/organizationText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="3"
+                android:text="Some text here \nSome more line of text should be here"
+                android:textSize="7sp"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="15sp"
+            android:layout_height="15sp"
+            android:src="@drawable/heart"
+
+            android:layout_marginTop="32sp"
+            app:layout_constraintLeft_toRightOf="@+id/textColumn"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
