@@ -1,4 +1,4 @@
-package com.example.toigether.ui.generation;
+package com.example.toigether.ui.home;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,26 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toigether.R;
-import com.example.toigether.ui.generation.GenerationViewModel;
 
-public class GenerationFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
-    private GenerationViewModel mViewModel;
+    private HomeViewModel mViewModel;
 
-    public static GenerationFragment newInstance() {
-        return new GenerationFragment();
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_generation, container, false);
+        return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(GenerationViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
     }
 
