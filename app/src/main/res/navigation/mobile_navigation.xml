@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.toigether.ui.home.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"

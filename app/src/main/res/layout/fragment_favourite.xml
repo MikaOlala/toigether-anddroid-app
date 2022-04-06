@@ -48,5 +48,4 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="14sp"
         android:scrollbars="none" />
-
 </LinearLayout>

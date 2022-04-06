@@ -4,4 +4,9 @@
     <string name="welcome_page_text">Наслаждайтесь удобным процессом организации самых важных мероприятий в вашей жизни!</string>
     <string name="next">Далее</string>
     <string name="favourite">Избранное</string>
+    <string name="choose_category">Выберите категорию события</string>
+    <string name="birthday">День рождения</string>
+    <string name="wedding">Свадьба</string>
+    <string name="corporate_party">Корпоратив</string>
+    <string name="team_building">Тимбилдинг</string>
 </resources>
