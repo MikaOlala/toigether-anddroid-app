@@ -38,6 +38,13 @@ public class GenerationFragment extends Fragment {
         categories.add("Свадьба");
         categories.add("Корпоратив");
         categories.add("Тимбилдинг");
+        categories.add("Детский утренник");
+        categories.add("Вечеринка");
+        categories.add("Открытие");
+        categories.add("Фестивали, ярмарки");
+        categories.add("Выставки, пресс-конференции");
+        categories.add("Светские рауты");
+        categories.add("Частные мероприятия");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
         list.setAdapter(arrayAdapter);
