@@ -9,4 +9,6 @@
     <string name="wedding">Свадьба</string>
     <string name="corporate_party">Корпоратив</string>
     <string name="team_building">Тимбилдинг</string>
+    <string name="profile">Профиль</string>
+    <string name="settings">Настройки</string>
 </resources>

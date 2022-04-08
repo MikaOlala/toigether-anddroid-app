@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+        DB db = new DB();
+        Log.e("CHECKING DB CONNECTION", db.open() + "");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("Checking firstRun", "" + prefs.getBoolean("firstrun", true));
         if(prefs.getBoolean("firstRun", true)) {
 //            SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
 //            SharedPreferences.Editor editor = sharedPreferences.edit();
