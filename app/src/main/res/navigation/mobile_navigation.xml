@@ -31,12 +31,12 @@
         android:name="com.example.toigether.ui.generation.GenerationFragment"
         tools:layout="@layout/fragment_generation" >
         <action
-            android:id="@+id/action_navigation_generation_to_calendarFragment"
-            app:destination="@id/calendarFragment" />
+            android:id="@+id/action_navigation_generation_to_tabLayoutFragment"
+            app:destination="@id/tabLayoutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/calendarFragment"
-        android:name="com.example.toigether.CalendarFragment"
-        android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        android:id="@+id/tabLayoutFragment"
+        android:name="com.example.toigether.TabLayoutFragment"
+        android:label="fragment_tab_layout"
+        tools:layout="@layout/fragment_tab_layout" />
 </navigation>

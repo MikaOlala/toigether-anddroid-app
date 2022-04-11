@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TabLayoutFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Категория: Свадьба"
+        android:textColor="@color/almost_black"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:paddingVertical="5sp"
+        android:layout_marginTop="65sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_service"
+        android:textSize="16sp"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutGeneration"
+        android:layout_width="match_parent"
+        android:layout_height="78sp"
+        android:layout_marginTop="10sp"
+        app:tabBackground="@drawable/selector_navigation_generator"
+
+        app:tabIndicatorGravity="bottom"
+        app:tabMaxWidth="41sp"
+        app:tabTextColor="@color/white">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerGeneration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>

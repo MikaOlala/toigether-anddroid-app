@@ -7,10 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,6 +35,12 @@ public class GenerationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_generation, container, false);
 
         final ListView list = view.findViewById(R.id.categoryList);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Navigation.findNavController(view).navigate(R.id.action_navigation_generation_to_tabLayoutFragment);
+            }
+        });
         ArrayList<String> categories = new ArrayList<>();
         categories.add("День рождения");
         categories.add("Свадьба");
@@ -51,12 +59,4 @@ public class GenerationFragment extends Fragment {
 
         return view;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(GenerationViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
 }
