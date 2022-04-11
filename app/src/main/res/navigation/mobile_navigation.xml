@@ -29,5 +29,14 @@
     <fragment
         android:id="@+id/navigation_generation"
         android:name="com.example.toigether.ui.generation.GenerationFragment"
-        tools:layout="@layout/fragment_generation" />
+        tools:layout="@layout/fragment_generation" >
+        <action
+            android:id="@+id/action_navigation_generation_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.toigether.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>
