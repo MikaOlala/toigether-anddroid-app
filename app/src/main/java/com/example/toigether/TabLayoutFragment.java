@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import devmike.jade.com.PageStepIndicator;
+
 public class TabLayoutFragment extends Fragment {
 
     @Override
@@ -21,6 +23,7 @@ public class TabLayoutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab_layout, container, false);
 
         TabLayout tabLayout = view.findViewById(R.id.tabLayoutGeneration);
+//        PageStepIndicator indicator = view.findViewById(R.id.page_stepper);
         ViewPager viewPager = view.findViewById(R.id.pagerGeneration);
         tabLayout.setupWithViewPager(viewPager);
 

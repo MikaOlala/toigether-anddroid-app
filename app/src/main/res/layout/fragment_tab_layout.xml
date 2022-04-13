@@ -25,41 +25,59 @@
         android:textStyle="bold"
         android:layout_gravity="center"/>
 
+<!--    <devmike.jade.com.PageStepIndicator-->
+<!--        app:pgTitles="@array/titles"-->
+<!--        app:pgTitleTextSize="15sp"-->
+<!--        app:pgStrokeAlpha="255"-->
+<!--        app:pgRadius="15dp"-->
+<!--        app:pgCurrentStepColor="@android:color/holo_red_dark"-->
+<!--        app:pgTextColor="@android:color/white"-->
+<!--        app:pgStepColor="@android:color/holo_purple"-->
+<!--        android:id="@+id/page_stepper"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutGeneration"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="78sp"
         android:layout_marginTop="10sp"
-        app:tabBackground="@drawable/selector_navigation_generator"
-
-        app:tabIndicatorGravity="bottom"
-        app:tabMaxWidth="41sp"
-        app:tabTextColor="@color/white">
+        app:tabMinWidth="130sp"
+        android:layout_gravity="center"
+        app:tabMode="scrollable">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:icon="@drawable/selector_navigation_generator"
+            android:text="@string/date" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2" />
+            android:icon="@drawable/selector_navigation_generator"
+            android:text="@string/city" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3" />
+            android:icon="@drawable/selector_navigation_generator"
+            android:text="@string/location" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/selector_navigation_generator"
+            android:text="@string/service" />
+
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pagerGeneration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
 
 </LinearLayout>

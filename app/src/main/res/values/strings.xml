@@ -17,4 +17,5 @@
     <string name="date">Дата</string>
     <string name="city">Город</string>
     <string name="location">Локация</string>
+    <string name="service">Услуги</string>
 </resources>
