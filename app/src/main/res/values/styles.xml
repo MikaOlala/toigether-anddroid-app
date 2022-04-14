@@ -39,4 +39,9 @@
         <item name="layout_constraintLeft_toLeftOf">parent</item>
     </style>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:editTextColor">@color/almost_black</item>
+    </style>
+
 </resources>

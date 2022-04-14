@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.toigether.R;
+import com.example.toigether.TabLayoutFragment;
 import com.example.toigether.ui.generation.GenerationViewModel;
 
 import java.util.ArrayList;
@@ -38,9 +40,16 @@ public class GenerationFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_generation_to_tabLayoutFragment);
+
+                String category = "";
+                category = list.getItemAtPosition(i).toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("categoryName", category);
+
+                Navigation.findNavController(view).navigate(R.id.action_navigation_generation_to_tabLayoutFragment, bundle);
             }
         });
+
         ArrayList<String> categories = new ArrayList<>();
         categories.add("День рождения");
         categories.add("Свадьба");

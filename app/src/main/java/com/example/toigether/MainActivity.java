@@ -1,7 +1,11 @@
 package com.example.toigether;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -28,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                Log.e("What is destination? ", String.valueOf(getResources().getResourceName(destination.getId())));
+                if(destination.getId() == R.id.navigation_generation || destination.getId() == R.id.tabLayoutFragment)
+                    bottomNavigationView.setVisibility(View.INVISIBLE);
+                else
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+            }
+        });
+
         DB db = new DB();
         Log.e("CHECKING DB CONNECTION", db.open() + "");
     }
@@ -36,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(prefs.getBoolean("firstRun", true)) {
-//            SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            editor.putString("name", "1");
-//            editor.apply();
             Log.e("Checking firstRun", " is working");
             prefs.edit().putBoolean("firstRun", false).apply();
             openActivityWelcome();

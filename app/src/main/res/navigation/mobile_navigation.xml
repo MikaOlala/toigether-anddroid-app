@@ -38,5 +38,6 @@
         android:id="@+id/tabLayoutFragment"
         android:name="com.example.toigether.TabLayoutFragment"
         android:label="fragment_tab_layout"
-        tools:layout="@layout/fragment_tab_layout" />
+        tools:layout="@layout/fragment_tab_layout" >
+    </fragment>
 </navigation>

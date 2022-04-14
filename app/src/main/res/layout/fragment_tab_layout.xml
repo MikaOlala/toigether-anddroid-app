@@ -8,9 +8,10 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/categoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Категория: Свадьба"
+        android:text=""
         android:textColor="@color/almost_black"
         android:textSize="12sp"
         android:layout_gravity="center"
@@ -75,9 +76,10 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerGeneration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
 </LinearLayout>

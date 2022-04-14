@@ -18,4 +18,22 @@
     <string name="city">Город</string>
     <string name="location">Локация</string>
     <string name="service">Услуги</string>
+    <string name="choose_variant">Выберите вариант</string>
+    <string name="close_location">В закрытом помещении</string>
+    <string name="open_location">На открытом воздухе</string>
+    <string name="choose_many_variants">Выберите несколько опций</string>
+    <string name="choose_all">Выбрать всё</string>
+    <string name="formalization">Оформление</string>
+    <string name="kitchen">Кухня</string>
+    <string name="leading">Ведущий</string>
+    <string name="photosession">Фотосессия</string>
+    <string name="filming">Видеосъемка</string>
+    <string name="show_program">Шоу-программа</string>
+    <string name="entertainment_program">Развлекательная программа для гостей</string>
+    <string name="ceremonies">Официальные церемонии</string>
+    <string name="home">Главная</string>
+    <string name="search">Поиск</string>
+    <string name="meetings">Встречи</string>
+    <string name="favourites">Избранное</string>
+    <string name="do_generation">Создать подборку</string>
 </resources>
