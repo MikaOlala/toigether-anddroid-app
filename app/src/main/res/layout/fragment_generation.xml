@@ -8,12 +8,9 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/highlighted_big"
         android:text="@string/choose_category"
         android:textSize="16sp"
-        android:textColor="@color/orange"
-        android:textStyle="bold"
         android:layout_marginVertical="20sp"
         android:layout_marginStart="21sp"/>
 

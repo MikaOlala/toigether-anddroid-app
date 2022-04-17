@@ -27,19 +27,18 @@
 <!--            android:layout_height="match_parent" />-->
 <!--    </LinearLayout>-->
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/side_menu_header"
-        app:menu="@menu/side_nav_menu"/>
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        app:headerLayout="@layout/side_menu_header"-->
+<!--        app:menu="@menu/side_nav_menu"/>-->
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,23 +59,16 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/profile_text"
                     android:text="Профиль"
-                    android:textSize="7sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="6sp"
                     app:layout_constraintLeft_toRightOf="@+id/profileIcon"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Интересные события"
+                    style="@style/highlighted_big"
+                    android:text="@string/interesting_events"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/orange"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -95,25 +87,26 @@
                 android:paddingHorizontal="18sp">
 
                 <TextView
+                    style="@style/highlighted_thin"
                     android:id="@+id/categoryTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Категории"
+                    android:text="@string/categories"
                     android:textSize="14sp"
-                    android:textColor="@color/orange"
-                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Все"
+                    android:text="@string/all"
                     android:textSize="9sp"
                     android:textColor="@color/orange"
+                    android:background="@drawable/orange_border"
+                    android:paddingHorizontal="6sp"
+                    android:paddingVertical="3sp"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
+<!--                change fonts style -->
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -246,17 +239,14 @@
                 android:paddingHorizontal="18sp">
 
                 <TextView
+                    style="@style/highlighted_thin"
                     android:id="@+id/ratingTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Топ рейтинг"
+                    android:text="@string/top_rating"
                     android:textSize="14sp"
-                    android:elevation="5sp"
-                    android:textColor="@color/orange"
-                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+<!--                change font style-->
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -411,17 +401,14 @@
                 android:paddingHorizontal="18sp">
 
                 <TextView
+                    style="@style/highlighted_thin"
                     android:id="@+id/recentlyRow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Недавно смотрели"
+                    android:text="@string/recently_watched"
                     android:textSize="14sp"
-                    android:elevation="5sp"
-                    android:textColor="@color/orange"
-                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+<!--                change font style-->
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

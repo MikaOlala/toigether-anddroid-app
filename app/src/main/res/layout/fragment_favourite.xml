@@ -21,24 +21,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Профиль"
-            android:textSize="7sp"
-            android:textStyle="bold"
-            android:layout_marginStart="6sp"
+            style="@style/profile_text"
             app:layout_constraintLeft_toRightOf="@+id/profileIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/highlighted"
         android:text="@string/favourite"
         android:textSize="16sp"
-        android:textColor="@color/orange"
-        android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginVertical="15sp"/>
 

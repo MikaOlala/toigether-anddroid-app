@@ -11,7 +11,6 @@
     <string name="team_building">Тимбилдинг</string>
     <string name="profile">Профиль</string>
     <string name="settings">Настройки</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_service">Выберите услуги</string>
     <string name="date">Дата</string>
@@ -47,4 +46,9 @@
     <string name="change_answers">Изменить ответы</string>
     <string name="generation_results_header">По вашим запросам мы подобрали несколько предложений</string>
     <string name="text_example">Some text here \nSome more line of text should be here \nSome more line of text should be hgfdgfdgbvcbere \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome morbvbvbcve line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be hercccccccccce \nSome more line of text should be here</string>
+    <string name="interesting_events">Интересные события</string>
+    <string name="categories">Категории</string>
+    <string name="all">Все</string>
+    <string name="top_rating">Топ рейтинг</string>
+    <string name="recently_watched">Недавно смотрели</string>
 </resources>
