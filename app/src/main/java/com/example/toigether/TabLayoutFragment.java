@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
@@ -30,6 +31,8 @@ public class TabLayoutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tab_layout, container, false);
 
         Button next = view.findViewById(R.id.next);
+        Button makeGen = view.findViewById(R.id.makeGen);
+        Button change = view.findViewById(R.id.change);
         TextView categoryTextView = view.findViewById(R.id.categoryName);
         categoryTextView.setText("Категория: " + getArguments().getString("categoryName"));
 
@@ -43,6 +46,7 @@ public class TabLayoutFragment extends Fragment {
         tlGenerationAdapter.addFragment(new LocationGenerationFragment(), "3");
         tlGenerationAdapter.addFragment(new ServiceGenerationFragment(), "4");
         tlGenerationAdapter.addFragment(new BudgetGenerationFragment(), "5");
+        tlGenerationAdapter.addFragment(new com.example.toigether.Fragment(), "✓");
         tlGenerationAdapter.addFragment(new ResultGenerationFragment(), "6");
 
         viewPager.setAdapter(tlGenerationAdapter);
@@ -50,7 +54,51 @@ public class TabLayoutFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                if(viewPager.getCurrentItem() == 4) {
+                    viewPager.setCurrentItem(6);
+                }
+                else
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 6) {
+                    next.setVisibility(ViewGroup.INVISIBLE);
+                    makeGen.setVisibility(View.VISIBLE);
+                    change.setVisibility(View.VISIBLE);
+                }
+                else {
+                    next.setVisibility(ViewGroup.VISIBLE);
+                    makeGen.setVisibility(View.INVISIBLE);
+                    change.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(0);
+            }
+        });
+
+        makeGen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_tabLayoutFragment_to_generationResultsFragment);
             }
         });
 

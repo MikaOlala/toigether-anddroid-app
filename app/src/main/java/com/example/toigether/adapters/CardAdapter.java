@@ -1,5 +1,8 @@
 package com.example.toigether.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private ArrayList<Organization> organizations;
+    private String variant;
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
@@ -32,14 +36,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         }
     }
 
-    public CardAdapter(ArrayList<Organization> organizations) {
+    public CardAdapter(ArrayList<Organization> organizations, String variant) {
         this.organizations = organizations;
+        this.variant = variant;
     }
 
     @NonNull
     @Override
     public CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
+        View v;
+        switch (variant) {
+            case "favourite":
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
+                break;
+            case "generation":
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_generation_results, parent, false);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + variant); // Add here cards from main menu
+        }
+
         CardViewHolder cardViewHolder = new CardViewHolder(v);
         return cardViewHolder;
     }
@@ -49,6 +65,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         Organization organization = organizations.get(position);
 
         holder.image.setImageResource(organization.getImage());
+
+
         holder.title.setText(organization.getName());
         holder.text.setText(organization.getDescription());
     }
@@ -57,4 +75,5 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     public int getItemCount() {
         return organizations.size();
     }
+
 }

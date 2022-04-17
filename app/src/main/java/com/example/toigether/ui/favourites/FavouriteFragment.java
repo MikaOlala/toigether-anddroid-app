@@ -46,7 +46,7 @@ public class FavouriteFragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
-        adapter = new CardAdapter(organizations);
+        adapter = new CardAdapter(organizations, "favourite");
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

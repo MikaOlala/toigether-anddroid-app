@@ -19,6 +19,7 @@
             android:id="@+id/organizationImg"
             android:layout_width="161sp"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/organization_bm"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"

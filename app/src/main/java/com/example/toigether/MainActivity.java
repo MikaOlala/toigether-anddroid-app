@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if(destination.getId() == R.id.navigation_generation || destination.getId() == R.id.tabLayoutFragment)
+                if(destination.getId() == R.id.tabLayoutFragment)
                     bottomNavigationView.setVisibility(View.INVISIBLE);
                 else
                     bottomNavigationView.setVisibility(View.VISIBLE);

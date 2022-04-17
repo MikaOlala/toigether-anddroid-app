@@ -43,4 +43,8 @@
     <string name="min_value_budget">0 KZT</string>
     <string name="generation_results">Ваши результаты опроса</string>
     <string name="budget">Бюджет</string>
+    <string name="make_generation">Сгенерировать подборку</string>
+    <string name="change_answers">Изменить ответы</string>
+    <string name="generation_results_header">По вашим запросам мы подобрали несколько предложений</string>
+    <string name="text_example">Some text here \nSome more line of text should be here \nSome more line of text should be hgfdgfdgbvcbere \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome morbvbvbcve line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be hercccccccccce \nSome more line of text should be here</string>
 </resources>

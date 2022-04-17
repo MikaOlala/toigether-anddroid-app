@@ -38,6 +38,7 @@ public class ResultGenerationFragment extends Fragment {
         setText("city", city);
         setText("location", location);
         setText("quantityOfServices", service);
+        setText("budget", budget);
 
         SpannableString content = new SpannableString(service.getText().toString());
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
@@ -46,7 +47,7 @@ public class ResultGenerationFragment extends Fragment {
         budget.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                setText("budget", budget);
+
             }
 
             @Override
