@@ -30,7 +30,7 @@ public class LocationGenerationFragment extends Fragment {
                 TextView text = view.findViewById(i);
 
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("location", String.valueOf(text)).apply();
+                editor.putString("location", String.valueOf(text.getText())).apply();
             }
         });
 

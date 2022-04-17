@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BudgetGenerationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BudgetGenerationFragment"
+    android:orientation="vertical"
+    android:padding="18sp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_price_range"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black_black"
+        android:layout_marginBottom="33sp"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:inputType="number"
+        android:maxLength="12"
+        android:imeOptions="actionDone"
+        android:background="@drawable/input_bar_background"
+        android:textSize="14sp"
+        android:textColorHint="@color/cool_gray"
+        android:hint="@string/input_sum_budget"
+        android:padding="8sp"
+        android:layout_marginBottom="16sp"
+        android:gravity="center"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="133sp"
+        android:elevation="6sp"
+        app:cardElevation="6sp"
+        app:cardCornerRadius="8sp"
+        android:layout_marginHorizontal="3sp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="28sp">
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                app:thumbRadius="14sp"
+                app:thumbColor="@color/white"
+
+                app:trackColor="@color/light_gray"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/min_value_budget"
+                android:textSize="11sp"
+
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max_value_slider"
+                android:textSize="11sp"
+
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

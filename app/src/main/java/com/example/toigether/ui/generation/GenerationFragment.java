@@ -2,6 +2,8 @@ package com.example.toigether.ui.generation;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,8 @@ public class GenerationFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_generation, container, false);
 
+        SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+
         final ListView list = view.findViewById(R.id.categoryList);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -45,6 +49,14 @@ public class GenerationFragment extends Fragment {
                 category = list.getItemAtPosition(i).toString();
                 Bundle bundle = new Bundle();
                 bundle.putString("categoryName", category);
+
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("date", null).apply();
+                editor.putString("city", null).apply();
+                editor.putString("location", null).apply();
+                editor.putString("services", null).apply();
+                editor.putString("quantityOfServices", null).apply();
+                editor.putString("budget", null).apply();
 
                 Navigation.findNavController(view).navigate(R.id.action_navigation_generation_to_tabLayoutFragment, bundle);
             }

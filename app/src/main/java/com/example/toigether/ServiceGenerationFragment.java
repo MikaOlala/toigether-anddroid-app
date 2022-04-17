@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,6 +35,8 @@ public class ServiceGenerationFragment extends Fragment {
         View view = inflater.inflate(R.layout.generation_service, container, false);
 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
 
         services = new ArrayList<>(Arrays.asList("Выбрать всё", "Оформление", "Кухня",
                 "Ведущий", "Фотосессия", "Видеосъемка", "Шоу-программа",
@@ -42,41 +46,40 @@ public class ServiceGenerationFragment extends Fragment {
         servicesList.setAdapter(adapter);
         servicesList.getLayoutParams().height = (int) ((int)getContext().getResources().getDisplayMetrics().heightPixels * 0.45);
 
-        Button next = view.findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.e("Checking array ", String.valueOf(servicesList.isItemChecked(2)));
-                checking();
-
-
-
-//                SharedPreferences.Editor editor = prefs.edit();
-//                Gson gson = new Gson();
-//                String json = gson.toJson(list);
-//                editor.putString("services", String.valueOf(text)).apply();
-            }
-        });
-
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                boolean check;
                 if (i == 0) {
-                    boolean check = servicesList.isItemChecked(i);
+                    check = servicesList.isItemChecked(i);
                     for (int j = 1; j < servicesList.getCount(); j++) {
                         servicesList.setItemChecked(j, check);
                     }
+
+                    choice = new ArrayList<>(services);
+                    choice.remove("Выбрать всё");
                 }
+                else {
+                    check = servicesList.isItemChecked(i);
+                    if (check)
+                        choice.add(servicesList.getItemAtPosition(i).toString());
+                    else
+                        choice.remove(servicesList.getItemAtPosition(i).toString());
+                }
+
+                String json = gson.toJson(choice);
+                editor.putString("services", json).apply();
+                editor.putString("quantityOfServices", String.valueOf(choice.size())).apply();
             }
         });
 
         return view;
     }
 
-    private void checking() {
-        for (int i = 1; i < servicesList.getCount(); i++) {
-            if(servicesList.isItemChecked(i))
-                choice.add((String) servicesList.getItemAtPosition(i));
-        }
-    }
+//    private void checking() {
+//        for (int i = 1; i < servicesList.getCount(); i++) {
+//            if(servicesList.isItemChecked(i))
+//                choice.add((String) servicesList.getItemAtPosition(i));
+//        }
+//    }
 }

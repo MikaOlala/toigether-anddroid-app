@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultGenerationFragment">
+    tools:context=".ResultGenerationFragment"
+    android:padding="18sp"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generation_results"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/black_black"
+        android:layout_marginBottom="25sp"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="21sp">
+
+            <TextView
+                style="@style/text_high_semi_bold"
+                android:text="@string/date"/>
+
+            <TextView
+                style="@style/text_high_semi_bold"
+                android:text="@string/city"/>
+
+            <TextView
+                style="@style/text_high_semi_bold"
+                android:text="@string/location"/>
+
+            <TextView
+                style="@style/text_high_semi_bold"
+                android:text="@string/service"/>
+
+            <TextView
+                style="@style/text_high_semi_bold"
+                android:text="@string/budget"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/date"
+                style="@style/text_gray_medium"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/city"
+                style="@style/text_gray_medium"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/text_gray_medium"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/service"
+                style="@style/text_gray_medium"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/budget"
+                style="@style/text_gray_medium"
+                android:text=""/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -36,4 +36,11 @@
     <string name="meetings">Встречи</string>
     <string name="favourites">Избранное</string>
     <string name="do_generation">Создать подборку</string>
+    <string name="choose_price_range">Выберите ценовой диапазон</string>
+    <string name="input_sum_budget">Введите примерную сумму бюджета</string>
+    <string name="max_value_slider">10.000.000 KZT</string>
+    <string name="min_value_slider">300.000 KZT</string>
+    <string name="min_value_budget">0 KZT</string>
+    <string name="generation_results">Ваши результаты опроса</string>
+    <string name="budget">Бюджет</string>
 </resources>

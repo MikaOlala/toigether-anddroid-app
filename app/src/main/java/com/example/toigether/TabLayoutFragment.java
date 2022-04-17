@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.toigether.adapters.TLGenerationAdapter;
@@ -28,6 +29,7 @@ public class TabLayoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_layout, container, false);
 
+        Button next = view.findViewById(R.id.next);
         TextView categoryTextView = view.findViewById(R.id.categoryName);
         categoryTextView.setText("Категория: " + getArguments().getString("categoryName"));
 
@@ -45,10 +47,13 @@ public class TabLayoutFragment extends Fragment {
 
         viewPager.setAdapter(tlGenerationAdapter);
 
-        return view;
-    }
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
+        });
 
-    public void setPage(int page) {
-        viewPager.setCurrentItem(page);
+        return view;
     }
 }
