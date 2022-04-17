@@ -1,6 +1,4 @@
-package com.example.toigether.ui.generation;
-
-import androidx.lifecycle.ViewModelProvider;
+package com.example.toigether.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.toigether.R;
-import com.example.toigether.TabLayoutFragment;
-import com.example.toigether.ui.generation.GenerationViewModel;
-
 import java.util.ArrayList;
 
 public class GenerationFragment extends Fragment {
-
-    private GenerationViewModel mViewModel;
 
     public static GenerationFragment newInstance() {
         return new GenerationFragment();

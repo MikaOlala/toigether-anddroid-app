@@ -1,4 +1,4 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.toigether.R;
 
 public class ResultGenerationFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.example.toigether.ui.meetings;
+package com.example.toigether.ui;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,11 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toigether.R;
-import com.example.toigether.ui.generation.GenerationViewModel;
 
 public class MeetingFragment extends Fragment {
-
-    private MeetingViewModel mViewModel;
 
     public static MeetingFragment newInstance() {
         return new MeetingFragment();
@@ -29,11 +26,5 @@ public class MeetingFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_meeting, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MeetingViewModel.class);
-        // TODO: Use the ViewModel
-    }
 
 }

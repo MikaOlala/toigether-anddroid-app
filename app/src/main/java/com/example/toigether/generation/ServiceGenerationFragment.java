@@ -1,4 +1,4 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
+import com.example.toigether.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

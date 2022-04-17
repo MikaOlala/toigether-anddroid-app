@@ -7,28 +7,28 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.toigether.ui.home.HomeFragment"
+        android:name="com.example.toigether.ui.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.toigether.ui.search.SearchFragment"
+        android:name="com.example.toigether.ui.SearchFragment"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_meeting"
-        android:name="com.example.toigether.ui.meetings.MeetingFragment"
+        android:name="com.example.toigether.ui.MeetingFragment"
         tools:layout="@layout/fragment_meeting" />
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.example.toigether.ui.favourites.FavouriteFragment"
+        android:name="com.example.toigether.ui.FavouriteFragment"
         tools:layout="@layout/fragment_favourite" />
 
     <fragment
         android:id="@+id/navigation_generation"
-        android:name="com.example.toigether.ui.generation.GenerationFragment"
+        android:name="com.example.toigether.ui.GenerationFragment"
         tools:layout="@layout/fragment_generation" >
         <action
             android:id="@+id/action_navigation_generation_to_tabLayoutFragment"
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/tabLayoutFragment"
-        android:name="com.example.toigether.TabLayoutFragment"
+        android:name="com.example.toigether.generation.TabLayoutFragment"
         android:label="fragment_tab_layout"
         tools:layout="@layout/fragment_tab_layout" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/generationResultsFragment"
-        android:name="com.example.toigether.GenerationResultsFragment"
+        android:name="com.example.toigether.generation.GenerationResultsFragment"
         android:label="fragment_generation_results"
         tools:layout="@layout/fragment_generation_results" />
 </navigation>

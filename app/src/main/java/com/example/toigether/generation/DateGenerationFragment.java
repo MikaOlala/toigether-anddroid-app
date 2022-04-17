@@ -1,4 +1,4 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+
+import com.example.toigether.R;
 
 public class DateGenerationFragment extends Fragment {
 

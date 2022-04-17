@@ -1,4 +1,4 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.toigether.R;
 
 import java.util.ArrayList;
 

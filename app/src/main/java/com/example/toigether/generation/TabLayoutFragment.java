@@ -1,21 +1,20 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -46,7 +45,7 @@ public class TabLayoutFragment extends Fragment {
         tlGenerationAdapter.addFragment(new LocationGenerationFragment(), "3");
         tlGenerationAdapter.addFragment(new ServiceGenerationFragment(), "4");
         tlGenerationAdapter.addFragment(new BudgetGenerationFragment(), "5");
-        tlGenerationAdapter.addFragment(new com.example.toigether.Fragment(), "✓");
+        tlGenerationAdapter.addFragment(new com.example.toigether.generation.Fragment(), "✓");
         tlGenerationAdapter.addFragment(new ResultGenerationFragment(), "6");
 
         viewPager.setAdapter(tlGenerationAdapter);

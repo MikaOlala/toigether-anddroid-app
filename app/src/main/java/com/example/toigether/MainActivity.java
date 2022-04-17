@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        DB db = new DB();
-        Log.e("CHECKING DB CONNECTION", db.open() + "");
     }
 
     @Override

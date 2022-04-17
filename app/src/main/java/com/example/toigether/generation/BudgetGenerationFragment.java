@@ -1,4 +1,4 @@
-package com.example.toigether;
+package com.example.toigether.generation;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.toigether.R;
 import com.google.android.material.slider.Slider;
 
 public class BudgetGenerationFragment extends Fragment {

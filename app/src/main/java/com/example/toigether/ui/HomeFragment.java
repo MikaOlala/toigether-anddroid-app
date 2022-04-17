@@ -1,4 +1,4 @@
-package com.example.toigether.ui.home;
+package com.example.toigether.ui;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,7 +16,6 @@ import com.example.toigether.R;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel mViewModel;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -26,13 +25,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }
