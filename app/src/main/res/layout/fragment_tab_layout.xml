@@ -12,7 +12,6 @@
         android:id="@+id/categoryName"
         android:layout_weight = "0"
         android:text=""
-        android:textSize="12sp"
         android:layout_gravity="center"
         android:paddingVertical="5sp"
         android:layout_marginTop="65sp" />
@@ -77,11 +76,11 @@
         android:layout_marginVertical="28sp">
 
         <androidx.appcompat.widget.AppCompatButton
-            style="@style/button"
             android:id="@+id/next"
+            style="@style/button"
+            android:layout_centerInParent="true"
             android:text="@string/next"
-            android:visibility="visible"
-            android:layout_centerInParent="true"/>
+            android:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatButton
             style="@style/button"

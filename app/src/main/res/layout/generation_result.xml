@@ -8,12 +8,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/header_black"
         android:text="@string/generation_results"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/black_black"
         android:layout_marginBottom="25sp"/>
 
     <LinearLayout
@@ -28,23 +24,28 @@
             android:layout_marginEnd="21sp">
 
             <TextView
-                style="@style/text_high_semi_bold"
+                style="@style/highlighted_thin"
+                android:layout_marginBottom="11sp"
                 android:text="@string/date"/>
 
             <TextView
-                style="@style/text_high_semi_bold"
+                style="@style/highlighted_thin"
+                android:layout_marginBottom="11sp"
                 android:text="@string/city"/>
 
             <TextView
-                style="@style/text_high_semi_bold"
+                style="@style/highlighted_thin"
+                android:layout_marginBottom="11sp"
                 android:text="@string/location"/>
 
             <TextView
-                style="@style/text_high_semi_bold"
+                style="@style/highlighted_thin"
+                android:layout_marginBottom="11sp"
                 android:text="@string/service"/>
 
             <TextView
-                style="@style/text_high_semi_bold"
+                style="@style/highlighted_thin"
+                android:layout_marginBottom="11sp"
                 android:text="@string/budget"/>
 
         </LinearLayout>

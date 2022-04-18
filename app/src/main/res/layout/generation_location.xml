@@ -8,12 +8,8 @@
     android:padding="18sp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/header_black"
         android:text="@string/choose_variant"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/black_black"
         android:layout_marginBottom="10sp"/>
     
     <RadioGroup
@@ -22,21 +18,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <RadioButton
+            style="@style/ordinary_text_deep"
             android:id="@+id/close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/close_location"
-            android:textSize="13sp"
-            android:textColor="@color/black_black"
-            android:layout_marginVertical="0sp"
-            />
+            android:text="@string/close_location" />
         <RadioButton
+            style="@style/ordinary_text_deep"
             android:id="@+id/open"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/open_location"
-            android:textSize="13sp"
-            android:textColor="@color/black_black"/>
+            android:text="@string/open_location"/>
     </RadioGroup>
 
 </LinearLayout>

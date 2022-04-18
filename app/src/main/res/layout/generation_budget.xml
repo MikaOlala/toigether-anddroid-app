@@ -9,12 +9,8 @@
     android:padding="18sp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/header_black"
         android:text="@string/choose_price_range"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/black_black"
         android:layout_marginBottom="33sp"/>
 
     <EditText
@@ -27,6 +23,7 @@
         android:background="@drawable/input_bar_background"
         android:textSize="14sp"
         android:textColorHint="@color/cool_gray"
+        android:fontFamily="@font/montserrat_medium"
         android:hint="@string/input_sum_budget"
         android:padding="8sp"
         android:layout_marginBottom="16sp"
@@ -61,20 +58,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
+                style="@style/pale_text"
                 android:id="@+id/sum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/min_value_budget"
-                android:textSize="11sp"
-
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/slider" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/pale_text"
                 android:text="@string/max_value_slider"
-                android:textSize="11sp"
 
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/slider" />

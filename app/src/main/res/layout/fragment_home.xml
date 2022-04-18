@@ -90,7 +90,6 @@
                     style="@style/highlighted_thin"
                     android:id="@+id/categoryTitle"
                     android:text="@string/categories"
-                    android:textSize="14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -242,7 +241,6 @@
                     style="@style/highlighted_thin"
                     android:id="@+id/ratingTitle"
                     android:text="@string/top_rating"
-                    android:textSize="14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -404,7 +402,6 @@
                     style="@style/highlighted_thin"
                     android:id="@+id/recentlyRow"
                     android:text="@string/recently_watched"
-                    android:textSize="14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

@@ -8,12 +8,8 @@
     android:padding="18sp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/header_black"
         android:text="@string/choose_many_variants"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/black_black"
         android:layout_marginBottom="10sp"/>
 
     <LinearLayout
