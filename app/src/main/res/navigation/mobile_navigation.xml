@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/generationResultsFragment"
-        android:name="com.example.toigether.generation.GenerationResultsFragment"
+        android:name="com.example.toigether.generation.ResultListFragment"
         android:label="fragment_generation_results"
-        tools:layout="@layout/fragment_generation_results" />
+        tools:layout="@layout/fragment_result_list" />
 </navigation>

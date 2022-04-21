@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/orgPic"
         android:layout_width="match_parent"
         android:layout_height="198sp"
         android:layout_weight="0"
@@ -23,7 +24,7 @@
         android:layout_marginBottom="14sp">
 
         <TextView
-            android:id="@+id/org_name"
+            android:id="@+id/orgName"
             style="@style/header_black_little"
             android:text="@string/event_org_name_example"
             android:paddingBottom="4sp"
@@ -31,10 +32,11 @@
             app:layout_constraintTop_toTopOf="parent"/>
         
         <TextView
+            android:id="@+id/orgContent"
             style="@style/card_content"
             android:maxLines="5"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/org_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/orgName"/>
 
         <ImageView
             style="@style/heart"

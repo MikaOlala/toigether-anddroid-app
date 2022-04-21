@@ -13,6 +13,9 @@ public class Organization {
         this.image = image;
     }
 
+    public Organization() {
+    }
+
     public Long getId() {
         return id;
     }

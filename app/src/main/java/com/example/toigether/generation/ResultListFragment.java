@@ -1,5 +1,6 @@
 package com.example.toigether.generation;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,18 +14,19 @@ import android.view.ViewGroup;
 import com.example.toigether.R;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.organizations.OrganizationActivity;
 
 import java.util.ArrayList;
 
-public class GenerationResultsFragment extends Fragment {
+public class ResultListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_generation_results, container, false);
+        View view = inflater.inflate(R.layout.fragment_result_list, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewGeneration);
-        RecyclerView.Adapter adapter;
+        CardAdapter adapter;
         RecyclerView.LayoutManager layoutManager;
 
         ArrayList<Organization> organizations = new ArrayList<>();
@@ -39,7 +41,19 @@ public class GenerationResultsFragment extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                openActivityOrganization(organizations.get(position).getId());
+            }
+        });
 
         return view;
+    }
+
+    public void openActivityOrganization(Long id) {
+        Intent intent = new Intent(getActivity(), OrganizationActivity.class);
+        intent.putExtra("id", id.toString());
+        startActivity(intent);
     }
 }

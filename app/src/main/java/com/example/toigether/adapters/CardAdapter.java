@@ -1,8 +1,5 @@
 package com.example.toigether.adapters;
 
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +12,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.toigether.R;
 import com.example.toigether.items.Organization;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private ArrayList<Organization> organizations;
+    private onItemClickListener listener;
     private String variant;
+
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public TextView title;
         public TextView text;
 
-        public CardViewHolder(@NonNull View itemView) {
+        public CardViewHolder(@NonNull View itemView, onItemClickListener listener) {
             super(itemView);
             image = itemView.findViewById(R.id.organizationImg);
             title = itemView.findViewById(R.id.organizationTitle);
             text = itemView.findViewById(R.id.organizationText);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -56,7 +72,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 throw new IllegalStateException("Unexpected value: " + variant); // Add here cards from main menu
         }
 
-        CardViewHolder cardViewHolder = new CardViewHolder(v);
+        CardViewHolder cardViewHolder = new CardViewHolder(v, listener);
         return cardViewHolder;
     }
 
