@@ -32,32 +32,32 @@
         android:layout_gravity="center"
         app:tabMode="scrollable">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_navigation_generator"
-            android:text="@string/date" />
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/tabDate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/selector_navigation_generator"-->
+<!--            android:text="@string/date" />-->
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_navigation_generator"
-            android:text="@string/city" />
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/tabCity"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/selector_navigation_generator"-->
+<!--            android:text="@string/city" />-->
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_navigation_generator"
-            android:text="@string/location" />
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabService"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/selector_navigation_generator"
-            android:text="@string/service" />
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/tabLocation"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/selector_navigation_generator"-->
+<!--            android:text="@string/location" />-->
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:id="@+id/tabService"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:icon="@drawable/selector_navigation_generator"-->
+<!--            android:text="@string/service" />-->
 
     </com.google.android.material.tabs.TabLayout>
 

@@ -124,6 +124,15 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!--    organization-->
+    <style name="header_black_little">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/almost_black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <!--    card_item - card_item_generation_results-->
     <style name="card_header">
         <item name="fontFamily">@font/montserrat_bold</item>
@@ -145,14 +154,23 @@
         <item name="android:textSize">7sp</item>
     </style>
 
-    <!--    card_item - card_item_generation_results-->
+    <!--    card_item - card_item_generation_results - organization-->
     <style name="heart">
         <item name="android:layout_width">15sp</item>
         <item name="android:layout_height">15sp</item>
         <item name="android:src">@drawable/heart</item>
     </style>
 
-    <!--    tab_layout-->
+    <!--    card_item_generation_results - organization-->
+    <style name="rating">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <!--    tab_layout - organization-->
     <style name="button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

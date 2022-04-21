@@ -45,7 +45,7 @@ public class ServiceGenerationFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_multiple_choice, services);
         servicesList = view.findViewById(R.id.servicesList);
         servicesList.setAdapter(adapter);
-        servicesList.getLayoutParams().height = (int) ((int)getContext().getResources().getDisplayMetrics().heightPixels * 0.45);
+//        servicesList.getLayoutParams().height = (int) ((int)getContext().getResources().getDisplayMetrics().heightPixels * 0.45);
 
         servicesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

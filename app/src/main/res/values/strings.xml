@@ -45,10 +45,12 @@
     <string name="make_generation">Сгенерировать подборку</string>
     <string name="change_answers">Изменить ответы</string>
     <string name="generation_results_header">По вашим запросам мы подобрали несколько предложений</string>
-    <string name="text_example">Some text here \nSome more line of text should be here \nSome more line of text should be hgfdgfdgbvcbere \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome morbvbvbcve line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be here \nSome more line of text should be hercccccccccce \nSome more line of text should be here</string>
+    <string name="text_example">Some text here Some more line of text should be here Some more line of text should be hgfdgfdgbvcbere Some more line of text should be here Some more line of text should be here Some more line of text should be here Some more line of text should be here \nSome morbvbvbcve line of text should be here Some more line of text should be here ome more line of text should be here Some more line of text should be here Some more line of text should be hercccccccccce \nSome more line of text should be here</string>
     <string name="interesting_events">Интересные события</string>
     <string name="categories">Категории</string>
     <string name="all">Все</string>
     <string name="top_rating">Топ рейтинг</string>
     <string name="recently_watched">Недавно смотрели</string>
+    <string name="event_org_name_example">BN Event organization</string>
+    <string name="make_meeting">Назначить встречу</string>
 </resources>
