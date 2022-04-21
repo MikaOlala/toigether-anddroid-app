@@ -53,4 +53,5 @@
     <string name="recently_watched">Недавно смотрели</string>
     <string name="event_org_name_example">BN Event organization</string>
     <string name="make_meeting">Назначить встречу</string>
+    <string name="some_text_here">Some text here</string>
 </resources>

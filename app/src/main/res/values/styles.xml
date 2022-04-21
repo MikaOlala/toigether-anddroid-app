@@ -115,7 +115,7 @@
         <item name="android:textSize">11sp</item>
     </style>
 
-    <!--    g_location - g_service - g_budget-->
+    <!--    g_location - g_service - g_budget - organization-->
     <style name="header_black">
         <item name="fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:layout_width">wrap_content</item>
@@ -154,6 +154,16 @@
         <item name="android:textSize">7sp</item>
     </style>
 
+<!--    organization-->
+    <style name="service_content">
+        <item name="fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/text_example</item>
+        <item name="android:textColor">@color/light_boring_gray</item>
+        <item name="android:textSize">7sp</item>
+    </style>
+
     <!--    card_item - card_item_generation_results - organization-->
     <style name="heart">
         <item name="android:layout_width">15sp</item>
@@ -181,4 +191,8 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="tabLayout" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">9sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

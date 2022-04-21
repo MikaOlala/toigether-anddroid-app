@@ -12,10 +12,11 @@
     <color name="orange">#ED7D2B</color>
     <color name="light_orange">#FFB681</color>
     <color name="light_gray">#CED7DF</color>
+    <color name="dirty_gray">#9A9A9A</color>
     <color name="cool_gray">#8A96A1</color>
     <color name="gray">#868686</color>
     <color name="pale_gray">#888888</color>
-    <color name="dirty_gray">#9A9A9A</color>
+    <color name="light_boring_gray">#747474</color>
     <color name="boring_gray">#626262</color>
     <color name="almost_black">#4F4F4F</color>
     <color name="black_black">#353535</color>

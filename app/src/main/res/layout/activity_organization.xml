@@ -1,76 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".organizations.OrganizationActivity"
-    android:orientation="vertical">
+    tools:context=".organizations.OrganizationActivity">
 
-    <ImageView
-        android:id="@+id/orgPic"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="198sp"
-        android:layout_weight="0"
-        android:src="@drawable/gravum"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="14sp"/>
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:paddingHorizontal="21sp"
-        android:layout_marginBottom="14sp">
+            <ImageView
+                android:id="@+id/orgPic"
+                android:layout_width="match_parent"
+                android:layout_height="198sp"
+                android:src="@drawable/gravum"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="14sp"/>
 
-        <TextView
-            android:id="@+id/orgName"
-            style="@style/header_black_little"
-            android:text="@string/event_org_name_example"
-            android:paddingBottom="4sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-        
-        <TextView
-            android:id="@+id/orgContent"
-            style="@style/card_content"
-            android:maxLines="5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orgName"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="21sp"
+                android:layout_marginBottom="14sp">
 
-        <ImageView
-            style="@style/heart"
-            android:id="@+id/heart"
-            android:layout_marginEnd="5sp"
-            app:layout_constraintRight_toLeftOf="@+id/rating"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            style="@style/rating"
-            android:id="@+id/rating"
-            android:text="10.0"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/heart"
-            tools:ignore="SmallSp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/orgName"
+                    style="@style/header_black_little"
+                    android:text="@string/event_org_name_example"
+                    android:paddingBottom="4sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutOrganization"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0"/>
+                <TextView
+                    android:id="@+id/orgContent"
+                    style="@style/card_content"
+                    android:maxLines="5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/orgName"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pagerOrganization"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+                <ImageView
+                    style="@style/heart"
+                    android:id="@+id/heart"
+                    android:layout_marginEnd="5sp"
+                    app:layout_constraintRight_toLeftOf="@+id/rating"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    style="@style/rating"
+                    android:id="@+id/rating"
+                    android:text="10.0"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/heart"
+                    tools:ignore="SmallSp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutOrganization"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                app:tabTextAppearance="@style/tabLayout"
+                app:tabSelectedTextColor="@color/black_black"
+                app:tabTextColor="@color/gray"
+                app:tabIndicatorColor="@color/orange"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pagerOrganization"
+                android:layout_width="match_parent"
+                android:layout_height="700sp"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="53sp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="90sp"
-        android:layout_weight="0"
-        android:paddingHorizontal="16sp">
+        android:background="@color/white"
+        android:paddingHorizontal="16sp"
+        android:layout_alignParentBottom="true">
         <androidx.appcompat.widget.AppCompatButton
             style="@style/button"
             android:id="@+id/makeMeeting"
@@ -81,5 +99,4 @@
             android:fontFamily="@font/montserrat_bold"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

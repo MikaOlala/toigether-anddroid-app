@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.toigether.R;
+import com.example.toigether.adapters.CustomPager;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.example.toigether.items.Organization;
 import com.google.android.material.tabs.TabLayout;
@@ -42,6 +43,8 @@ public class OrganizationActivity extends AppCompatActivity {
         content = findViewById(R.id.orgContent);
         TabLayout tabLayout = findViewById(R.id.tabLayoutOrganization);
         ViewPager viewPager = findViewById(R.id.pagerOrganization);
+//        CustomPager viewPager = new CustomPager(OrganizationActivity.this);
+//        viewPager.findViewById(R.id.pagerOrganization);
         tabLayout.setupWithViewPager(viewPager);
 
         TLGenerationAdapter tlGenerationAdapter = new TLGenerationAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
