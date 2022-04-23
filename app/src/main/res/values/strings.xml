@@ -54,4 +54,10 @@
     <string name="event_org_name_example">BN Event organization</string>
     <string name="make_meeting">Назначить встречу</string>
     <string name="some_text_here">Some text here</string>
+    <string name="your_service_choice">Ваши выбранные услуги</string>
+    <string name="return_and_change">Вернуться и изменить</string>
+    <string name="how_to_contact">Как с вами связаться?</string>
+    <string name="make_call">Созвониться</string>
+    <string name="telegram">Telegram</string>
+    <string name="whatsapp">WhatsApp</string>
 </resources>

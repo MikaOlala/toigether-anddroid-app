@@ -26,14 +26,27 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameService"/>
 
-    <ImageView
+    <RadioButton
+        android:id="@+id/radio"
         android:layout_width="20sp"
         android:layout_height="20sp"
-        android:src="@drawable/rounds_list"
+
+        android:background="@drawable/rounds_list"
+        android:button="@color/transparent"
         android:layout_marginEnd="25sp"
+        android:gravity="center"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+<!--    <ImageView-->
+<!--        android:layout_width="20sp"-->
+<!--        android:layout_height="20sp"-->
+<!--        android:src="@drawable/rounds_list"-->
+<!--        android:layout_marginEnd="25sp"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
 
     <View
         android:layout_width="match_parent"

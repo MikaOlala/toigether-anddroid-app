@@ -48,4 +48,9 @@
         android:name="com.example.toigether.generation.ResultListFragment"
         android:label="fragment_generation_results"
         tools:layout="@layout/fragment_result_list" />
+    <fragment
+        android:id="@+id/orgProgramFragment"
+        android:name="com.example.toigether.organizations.OrgProgramFragment"
+        android:label="org_program_fragment"
+        tools:layout="@layout/org_program_fragment" />
 </navigation>
