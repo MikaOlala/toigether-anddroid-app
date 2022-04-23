@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -24,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.toigether.R;
 import com.example.toigether.adapters.CustomPager;
@@ -120,6 +123,7 @@ public class OrganizationActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_make_meeting);
 
         TextView cancel = dialog.findViewById(R.id.cancel);
+        Button call = dialog.findViewById(R.id.call);
         ListView list = dialog.findViewById(R.id.servicesList);
 
         Gson gson = new Gson();
@@ -140,6 +144,23 @@ public class OrganizationActivity extends AppCompatActivity {
         list.setAdapter(arrayAdapter);
 
         dialog.show();
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.toast,
+                        (ViewGroup) findViewById(R.id.toast));
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.TOP, 0, 30);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+
+                dialog.cancel();
+            }
+        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override

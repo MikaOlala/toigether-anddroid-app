@@ -60,4 +60,6 @@
     <string name="make_call">Созвониться</string>
     <string name="telegram">Telegram</string>
     <string name="whatsapp">WhatsApp</string>
+    <string name="toast_text_2">Свои заявки вы можете посмотреть в кабинете</string>
+    <string name="toast_text_1">Заявка готова. С вами скоро свяжется менеджер</string>
 </resources>
