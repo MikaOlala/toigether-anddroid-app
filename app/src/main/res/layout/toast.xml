@@ -14,7 +14,7 @@
         android:paddingVertical="8sp">
 
     <TextView
-        android:id="@+id/request_ready"
+        android:id="@+id/text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/toast_text_1"
@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
+        android:id="@+id/text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/toast_text_2"
@@ -32,7 +33,7 @@
         android:textColor="@color/white"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/request_ready"/>
+        app:layout_constraintTop_toBottomOf="@id/text_1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

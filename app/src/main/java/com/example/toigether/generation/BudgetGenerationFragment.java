@@ -92,7 +92,7 @@ public class BudgetGenerationFragment extends Fragment {
                 }
 
                 SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("budget", editableString + " KZT").apply();
+                editor.putString("budget", editableString).apply();
             }
 
         });

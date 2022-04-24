@@ -12,6 +12,7 @@
 
 
     <color name="green_trans">#CB95C180</color>
+    <color name="red_trans">#CBC18080</color>
     <color name="orange">#ED7D2B</color>
     <color name="light_orange">#FFB681</color>
     <color name="light_gray">#CED7DF</color>

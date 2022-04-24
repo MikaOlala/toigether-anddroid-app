@@ -20,7 +20,6 @@ import com.example.toigether.R;
 
 public class ResultGenerationFragment extends Fragment {
 
-    private TextView date, city, location, service, budget;
     private SharedPreferences prefs;
 
     @Override
@@ -30,11 +29,11 @@ public class ResultGenerationFragment extends Fragment {
 
         prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
-        date = view.findViewById(R.id.date);
-        city = view.findViewById(R.id.city);
-        location = view.findViewById(R.id.location);
-        service = view.findViewById(R.id.service);
-        budget = view.findViewById(R.id.budget);
+        TextView date = view.findViewById(R.id.date);
+        TextView city = view.findViewById(R.id.city);
+        TextView location = view.findViewById(R.id.location);
+        TextView service = view.findViewById(R.id.service);
+        TextView budget = view.findViewById(R.id.budget);
 
         setText("date", date);
         setText("city", city);
@@ -68,7 +67,6 @@ public class ResultGenerationFragment extends Fragment {
 
     public void setText(String variable, TextView textView) {
         String data = prefs.getString(variable, null);
-        Log.e("set text", variable + " <-" + data);
         String result = "";
         if(data == null) {
             result = "Не выбрано";
@@ -76,12 +74,14 @@ public class ResultGenerationFragment extends Fragment {
         else {
             if (variable.equals("quantityOfServices")) {
                 if(data.equals("1"))
-                    result = "Выбрано " + data + " опция";
+                    result = "Выбрана " + data + " опция";
                 else if (data.equals("2") || data.equals("3") || data.equals("4"))
                     result = "Выбрано " + data + " опции";
                 else
                     result = "Выбрано " + data + " опций";
             }
+            else if(variable.equals("budget"))
+                result = data + " KZT";
             else
                 result = data;
         }

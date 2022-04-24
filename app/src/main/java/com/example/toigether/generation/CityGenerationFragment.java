@@ -7,31 +7,38 @@ import android.os.Bundle;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.toigether.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CityGenerationFragment extends Fragment {
 
+    private SharedPreferences prefs;
     private View pastView = null;
     private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> cities = new ArrayList<>();
+    private ListView list;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.generation_city, container, false);
 
-        SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+        prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
         SearchView search = view.findViewById(R.id.search);
-        ListView list = view.findViewById(R.id.cityList);
-        ArrayList<String> cities = new ArrayList<>();
+        list = view.findViewById(R.id.cityList);
+        cities = new ArrayList<>();
         cities.add("Нур-султан");
         cities.add("Алматы");
         cities.add("Шымкент");
@@ -45,6 +52,8 @@ public class CityGenerationFragment extends Fragment {
         cities.add("Караганда");
         arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, cities);
         list.setAdapter(arrayAdapter);
+
+        ifMadeEarlier();
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,4 +91,34 @@ public class CityGenerationFragment extends Fragment {
 
         return view;
     }
+
+    private void ifMadeEarlier() {
+        String data = prefs.getString("city", null);
+        if (data!=null) {
+            View view = list.getSelectedView();
+//            View view = (View) list.getItemAtPosition(cities.indexOf(data));
+            Log.e("shit", String.valueOf(view==null));
+//            getViewByPosition(cities.indexOf(data), list);
+//            if (view==null)
+//                Log.e("bullshit", "ggg");
+//            else
+//                view.setBackgroundColor(getResources().getColor(R.color.orange));
+
+
+
+        }
+    }
+//    public void getViewByPosition(int pos, ListView listView) {
+//        final int firstListItemPosition = listView.getFirstVisiblePosition();
+//        final int lastListItemPosition = firstListItemPosition + arrayAdapter.getCount() - 1;
+//        Log.e("first shit", String.valueOf(firstListItemPosition));
+//        Log.e("last shit", String.valueOf(lastListItemPosition));
+////        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
+////            return listView.getAdapter().getView(pos, null, listView);
+////        } else {
+//            final int childIndex = pos - firstListItemPosition;
+//            Log.e("child shit", String.valueOf(childIndex));
+//            listView.getChildAt(childIndex).setBackgroundColor(getResources().getColor(R.color.orange));;
+//
+//    }
 }

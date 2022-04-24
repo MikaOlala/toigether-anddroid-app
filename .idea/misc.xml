@@ -3,22 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/app_button.xml" value="0.2435" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/app_button_light.xml" value="0.2435" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/rounds_list.xml" value="0.346" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_main.xml" value="0.39266304347826086" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_organization.xml" value="0.1" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/card_item.xml" value="0.19655521783181357" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/card_item_generation_results.xml" value="0.19655521783181357" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/custom_list_view_dialog.xml" value="0.24375" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/dialog_make_meeting.xml" value="0.2" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/fragment_home.xml" value="0.19655521783181357" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/fragment_tab_layout.xml" value="0.4" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/generation_result.xml" value="0.19972826086956522" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/generation_service.xml" value="0.29257246376811596" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/org_program_fragment.xml" value="0.2" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/program_list.xml" value="0.3944746376811594" />
-        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/toast.xml" value="0.3944746376811594" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable/heart.xml" value="0.1525" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable/welcome_page_button.xml" value="0.1675" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -34,16 +18,20 @@
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_meeting.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_tab_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/generation_city.xml" value="0.15172101449275363" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/generation_date.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/home_fragment.xml" value="0.1308876811594203" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/org_program_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/side_menu_header.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/toast.xml" value="0.264" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/welcome_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/menu/side_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

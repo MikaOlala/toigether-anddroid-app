@@ -7,6 +7,16 @@
     tools:context=".generation.TabLayoutFragment"
     android:orientation="vertical">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <TextView
         style="@style/ordinary_text"
         android:id="@+id/categoryName"
@@ -26,7 +36,8 @@
         android:id="@+id/scroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,59 +73,22 @@
                 app:sv_animationType="All"
                 app:sv_stepsNumber="6"
                 app:sv_nextStepCircleEnabled="true"
+                app:sv_typeface="@font/montserrat_medium"
+                app:sv_textSize="15sp"
                 />
 
         </LinearLayout>
     </HorizontalScrollView>
 
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutGeneration"
-        android:layout_width="wrap_content"
-        android:layout_height="78sp"
-        android:layout_weight = "0"
-        android:layout_marginTop="10sp"
-        app:tabMinWidth="130sp"
-        android:layout_gravity="center"
-        app:tabMode="scrollable">
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:id="@+id/tabDate"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/selector_navigation_generator"-->
-<!--            android:text="@string/date" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:id="@+id/tabCity"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/selector_navigation_generator"-->
-<!--            android:text="@string/city" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:id="@+id/tabLocation"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/selector_navigation_generator"-->
-<!--            android:text="@string/location" />-->
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:id="@+id/tabService"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/selector_navigation_generator"-->
-<!--            android:text="@string/service" />-->
-
-    </com.google.android.material.tabs.TabLayout>
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerGeneration"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400sp"
         android:layout_weight = "1"/>
 
 
     <RelativeLayout
+        android:id="@+id/buttonsRow"
         android:layout_width="match_parent"
         android:layout_height="105sp"
         android:layout_weight="0"
@@ -149,4 +123,7 @@
             android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
