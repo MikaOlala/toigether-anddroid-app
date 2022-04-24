@@ -12,11 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.google.android.material.tabs.TabLayout;
+import com.shuhart.stepview.StepView;
+
+import java.util.ArrayList;
 
 
 public class TabLayoutFragment extends Fragment {
@@ -34,6 +39,20 @@ public class TabLayoutFragment extends Fragment {
         Button change = view.findViewById(R.id.change);
         TextView categoryTextView = view.findViewById(R.id.categoryName);
         categoryTextView.setText("Категория: " + getArguments().getString("categoryName"));
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Дата");
+        arrayList.add("Город");
+        arrayList.add("Локация");
+        arrayList.add("Услуги");
+        arrayList.add("Бюджет");
+        arrayList.add("Результат");
+
+        StepView stepView = view.findViewById(R.id.step_view);
+        stepView.setSteps(arrayList);
+
+        HorizontalScrollView scroll = view.findViewById(R.id.scroll);
+        int scrollWidth = getContext().getResources().getDisplayMetrics().widthPixels;
 
         TabLayout tabLayout = view.findViewById(R.id.tabLayoutGeneration);
         viewPager = view.findViewById(R.id.pagerGeneration);
@@ -58,6 +77,17 @@ public class TabLayoutFragment extends Fragment {
                 }
                 else
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+
+                stepView.go(viewPager.getCurrentItem(), true);
+
+                if (viewPager.getCurrentItem() == 4 || viewPager.getCurrentItem() == 5)
+                    scroll.scrollTo(scrollWidth, 0);
+                else if(viewPager.getCurrentItem() == 2)
+                    scroll.scrollTo((int) (scrollWidth * 0.25), 0);
+                else if(viewPager.getCurrentItem() == 3)
+                    scroll.scrollTo((int) (scrollWidth * 0.75), 0);
+                else
+                    scroll.scrollTo(0, 0);
             }
         });
 
