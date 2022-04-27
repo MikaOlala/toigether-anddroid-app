@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "141583848677",
+    "firebase_url": "https://fir-auth-e24e8-default-rtdb.firebaseio.com",
+    "project_id": "fir-auth-e24e8",
+    "storage_bucket": "fir-auth-e24e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141583848677:android:78249eede900e0b00cf00c",
+        "android_client_info": {
+          "package_name": "com.example.toigether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141583848677-hjalkdahu7r1du7l5qmeai2enr721iaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7_LLPfkjXvrTgeovAXjsCbftH5L8-aV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141583848677-hjalkdahu7r1du7l5qmeai2enr721iaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

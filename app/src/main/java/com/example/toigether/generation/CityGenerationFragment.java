@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -53,8 +54,6 @@ public class CityGenerationFragment extends Fragment {
         arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, cities);
         list.setAdapter(arrayAdapter);
 
-        ifMadeEarlier();
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -92,33 +91,4 @@ public class CityGenerationFragment extends Fragment {
         return view;
     }
 
-    private void ifMadeEarlier() {
-        String data = prefs.getString("city", null);
-        if (data!=null) {
-            View view = list.getSelectedView();
-//            View view = (View) list.getItemAtPosition(cities.indexOf(data));
-            Log.e("shit", String.valueOf(view==null));
-//            getViewByPosition(cities.indexOf(data), list);
-//            if (view==null)
-//                Log.e("bullshit", "ggg");
-//            else
-//                view.setBackgroundColor(getResources().getColor(R.color.orange));
-
-
-
-        }
-    }
-//    public void getViewByPosition(int pos, ListView listView) {
-//        final int firstListItemPosition = listView.getFirstVisiblePosition();
-//        final int lastListItemPosition = firstListItemPosition + arrayAdapter.getCount() - 1;
-//        Log.e("first shit", String.valueOf(firstListItemPosition));
-//        Log.e("last shit", String.valueOf(lastListItemPosition));
-////        if (pos < firstListItemPosition || pos > lastListItemPosition ) {
-////            return listView.getAdapter().getView(pos, null, listView);
-////        } else {
-//            final int childIndex = pos - firstListItemPosition;
-//            Log.e("child shit", String.valueOf(childIndex));
-//            listView.getChildAt(childIndex).setBackgroundColor(getResources().getColor(R.color.orange));;
-//
-//    }
 }

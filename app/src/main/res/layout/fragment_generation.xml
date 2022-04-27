@@ -23,24 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="44sp">-->
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1sp"-->
-<!--                    android:background="@color/gray"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                    tools:ignore="SmallSp" />-->
-<!--                <TextView-->
-<!--                    style="@style/category_name"-->
-<!--                    android:text="@string/birthday"-->
-<!--                    tools:ignore="MissingConstraints" />-->
-<!--                <ImageView-->
-<!--                    style="@style/category_arrow"-->
-<!--                    tools:ignore="MissingConstraints" />-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
         </LinearLayout>
 
 </LinearLayout>

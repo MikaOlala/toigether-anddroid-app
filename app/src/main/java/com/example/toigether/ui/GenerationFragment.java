@@ -33,6 +33,8 @@ public class GenerationFragment extends Fragment {
         SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
         final ListView list = view.findViewById(R.id.categoryList);
+
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

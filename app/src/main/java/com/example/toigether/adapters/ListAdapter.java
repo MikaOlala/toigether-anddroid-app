@@ -62,6 +62,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         servicesFull = new ArrayList<>(services);
     }
 
+
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

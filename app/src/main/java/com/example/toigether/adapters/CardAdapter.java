@@ -80,7 +80,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         Organization organization = organizations.get(position);
 
-        holder.image.setImageResource(organization.getImage());
+//        holder.image.setImageResource(organization.getImage());
         holder.title.setText(organization.getName());
         holder.text.setText(organization.getDescription());
     }
