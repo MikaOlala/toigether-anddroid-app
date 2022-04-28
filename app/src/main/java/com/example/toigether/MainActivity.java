@@ -16,13 +16,20 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.toigether.items.Org;
+import com.example.toigether.items.OrgTeam;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.TeamMember;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         prefs = getSharedPreferences("com.example.toigether", MODE_PRIVATE);
 
-        check();
+//        check();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
@@ -68,24 +75,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void check () {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("organizations")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Org organization = document.toObject(Org.class);
+//вывод всех причастных участников
+//    private void check () {
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        db.collection("team_members").whereEqualTo("org_id", "6zp4DBeuPNI6PR7S1DWI")
+//            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                @Override
+//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        TeamMember teamMember = document.toObject(TeamMember.class);
+//                        Log.e("MainActivity check", teamMember.toString());
+//                    }
+//                }
+//        });
+//    }
 
-                                Log.e("AJAJAJA", organization.toString());
-                            }
-                        } else {
-                            Log.e("AJAJAJA", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-    }
 }

@@ -33,7 +33,21 @@ public class GenerationFragment extends Fragment {
         SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
         final ListView list = view.findViewById(R.id.categoryList);
+        ArrayList<String> categories = new ArrayList<>();
+        categories.add("День рождения");
+        categories.add("Свадьба");
+        categories.add("Корпоратив");
+        categories.add("Тимбилдинг");
+        categories.add("Детский утренник");
+        categories.add("Вечеринка");
+        categories.add("Открытие");
+        categories.add("Фестивали, ярмарки");
+        categories.add("Выставки, пресс-конференции");
+        categories.add("Светские рауты");
+        categories.add("Частные мероприятия");
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
+        list.setAdapter(arrayAdapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -55,22 +69,6 @@ public class GenerationFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_navigation_generation_to_tabLayoutFragment, bundle);
             }
         });
-
-        ArrayList<String> categories = new ArrayList<>();
-        categories.add("День рождения");
-        categories.add("Свадьба");
-        categories.add("Корпоратив");
-        categories.add("Тимбилдинг");
-        categories.add("Детский утренник");
-        categories.add("Вечеринка");
-        categories.add("Открытие");
-        categories.add("Фестивали, ярмарки");
-        categories.add("Выставки, пресс-конференции");
-        categories.add("Светские рауты");
-        categories.add("Частные мероприятия");
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, categories);
-        list.setAdapter(arrayAdapter);
 
         return view;
     }

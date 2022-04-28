@@ -1,5 +1,6 @@
 package com.example.toigether.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toigether.R;
 import com.example.toigether.items.Organization;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -80,9 +82,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         Organization organization = organizations.get(position);
 
-//        holder.image.setImageResource(organization.getImage());
+        Picasso.get().load(organization.getImage()).into(holder.image);
         holder.title.setText(organization.getName());
         holder.text.setText(organization.getDescription());
+        Log.e("CardAdapter", holder.text.getText().toString());
     }
 
     @Override

@@ -131,7 +131,10 @@ public class TabLayoutFragment extends Fragment {
         makeGen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_tabLayoutFragment_to_generationResultsFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("categoryName", getArguments().getString("categoryName"));
+
+                Navigation.findNavController(view).navigate(R.id.action_tabLayoutFragment_to_generationResultsFragment, bundle);
             }
         });
 

@@ -61,10 +61,10 @@ public class OrganizationActivity extends AppCompatActivity {
         prefs = this.getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
         organizations = new ArrayList<>();
-        organizations.add(new Organization(1L, "BN Event organization", "BN organization - adorable organization which u would like bla bla", R.drawable.organization_bm));
-        organizations.add(new Organization(2L, "Gravum Event Masters", "We are adorable organization too, u would like us either a-la-la", R.drawable.gravum));
-        organizations.add(new Organization(3L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.org));
-        organizations.add(new Organization(4L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.organization_wedding));
+//        organizations.add(new Organization(1L, "BN Event organization", "BN organization - adorable organization which u would like bla bla", R.drawable.organization_bm));
+//        organizations.add(new Organization(2L, "Gravum Event Masters", "We are adorable organization too, u would like us either a-la-la", R.drawable.gravum));
+//        organizations.add(new Organization(3L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.org));
+//        organizations.add(new Organization(4L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.organization_wedding));
         String value = getIntent().getExtras().getString("id");
 
         pic = findViewById(R.id.orgPic);
@@ -111,7 +111,7 @@ public class OrganizationActivity extends AppCompatActivity {
                 break;
             }
         }
-        pic.setImageResource(organization.getImage());
+//        pic.setImageResource(organization.getImage());
         name.setText(organization.getName());
         content.setText(organization.getDescription());
     }
