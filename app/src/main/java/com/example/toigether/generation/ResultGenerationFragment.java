@@ -45,23 +45,6 @@ public class ResultGenerationFragment extends Fragment {
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         service.setText(content);
 
-        budget.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         return view;
     }
 
@@ -88,5 +71,4 @@ public class ResultGenerationFragment extends Fragment {
 
         textView.setText(result);
     }
-
 }

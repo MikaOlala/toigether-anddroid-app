@@ -1,8 +1,11 @@
 package com.example.toigether.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Organization {
+public class Organization implements Parcelable {
     private String id;
     private String name;
     private String description;
@@ -33,6 +36,29 @@ public class Organization {
 
     public Organization() {
     }
+
+    protected Organization(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        description = in.readString();
+        image = in.readString();
+        rating = in.readFloat();
+        town = in.readString();
+        gen_services = in.createStringArrayList();
+        categories = in.createStringArrayList();
+    }
+
+    public static final Creator<Organization> CREATOR = new Creator<Organization>() {
+        @Override
+        public Organization createFromParcel(Parcel in) {
+            return new Organization(in);
+        }
+
+        @Override
+        public Organization[] newArray(int size) {
+            return new Organization[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -110,5 +136,23 @@ public class Organization {
                 "\n town=" + town +
                 "\n services=" + gen_services +
                 "\n categories=" + categories;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeString(image);
+
+        parcel.writeFloat(rating);
+        parcel.writeString(town);
+        parcel.writeList(gen_services);
+        parcel.writeList(categories);
     }
 }

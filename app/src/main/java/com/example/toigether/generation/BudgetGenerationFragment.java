@@ -34,8 +34,6 @@ public class BudgetGenerationFragment extends Fragment {
         Slider slider = view.findViewById(R.id.slider);
         EditText editText = view.findViewById(R.id.input);
 
-
-
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @SuppressLint("RestrictedApi")
             @Override

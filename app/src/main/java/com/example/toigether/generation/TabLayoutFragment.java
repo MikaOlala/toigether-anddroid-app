@@ -2,13 +2,17 @@ package com.example.toigether.generation;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,14 +24,23 @@ import android.widget.TextView;
 
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
+import com.example.toigether.items.Organization;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.shuhart.stepview.StepView;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-
 
 public class TabLayoutFragment extends Fragment {
 
     private ViewPager viewPager;
+    private ArrayList<Organization> organizations = new ArrayList<>();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -102,6 +115,7 @@ public class TabLayoutFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 if(position == 6) {
+                    getOrganizations();
                     next.setVisibility(ViewGroup.INVISIBLE);
                     makeGen.setVisibility(View.VISIBLE);
                     change.setVisibility(View.VISIBLE);
@@ -133,11 +147,52 @@ public class TabLayoutFragment extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("categoryName", getArguments().getString("categoryName"));
+                bundle.putParcelableArrayList("organizations", organizations);
 
                 Navigation.findNavController(view).navigate(R.id.action_tabLayoutFragment_to_generationResultsFragment, bundle);
             }
         });
 
         return view;
+    }
+
+    // is it possible to send saved data from here to ResultGenFragment?
+    private void getOrganizations() {
+        SharedPreferences prefs = getContext().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+        ArrayList<Organization> organizations = new ArrayList<>();
+
+        String category = getArguments().getString("categoryName");
+        ArrayList<String> categories = new ArrayList<>();
+        categories.add(category);
+
+        String city = prefs.getString("city", null); // null if statement in query
+
+        ArrayList<String> services = new ArrayList<>();
+        Gson gson = new Gson();
+        String json = prefs.getString("services", null); // null if statement in query
+        if(json!=null) {
+            Type type = new TypeToken<ArrayList<String>>() {}.getType();
+            services = gson.fromJson(json, type);
+        }
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("organizations")
+                .whereEqualTo("town", city).whereArrayContainsAny("gen_services", services)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.e("ResultFragment getOrganizations", String.valueOf(document.getData()));
+                        Organization organization = document.toObject(Organization.class);
+                        organizations.add(organization);
+                    }
+                } else {
+                    Log.d("ResultFragment getOrganizations", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+
+        this.organizations = organizations;
     }
 }
