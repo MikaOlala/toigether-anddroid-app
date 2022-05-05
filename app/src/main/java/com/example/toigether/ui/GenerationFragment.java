@@ -52,7 +52,6 @@ public class GenerationFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 String category = "";
                 category = list.getItemAtPosition(i).toString();
                 Bundle bundle = new Bundle();

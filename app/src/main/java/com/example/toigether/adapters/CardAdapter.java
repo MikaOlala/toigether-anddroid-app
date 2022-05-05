@@ -14,6 +14,8 @@ import com.example.toigether.R;
 import com.example.toigether.items.Organization;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
@@ -33,12 +35,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         public ImageView image;
         public TextView title;
         public TextView text;
+        public TextView rating;
 
         public CardViewHolder(@NonNull View itemView, onItemClickListener listener) {
             super(itemView);
             image = itemView.findViewById(R.id.organizationImg);
             title = itemView.findViewById(R.id.organizationTitle);
             text = itemView.findViewById(R.id.organizationText);
+            rating = itemView.findViewById(R.id.rating);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +74,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             case "generation":
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_generation_results, parent, false);
                 break;
+            case "main":
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_main_page, parent, false);
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + variant); // Add here cards from main menu
         }
@@ -85,7 +92,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         Picasso.get().load(organization.getImage()).into(holder.image);
         holder.title.setText(organization.getName());
         holder.text.setText(organization.getDescription());
-        Log.e("CardAdapter", holder.text.getText().toString());
+        holder.rating.setText(String.valueOf(organization.getRating()));
     }
 
     @Override

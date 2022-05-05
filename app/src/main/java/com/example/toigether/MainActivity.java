@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(prefs.getBoolean("firstRun", true)) {
-            Log.e("Checking firstRun", " is working");
             prefs.edit().putBoolean("firstRun", false).apply();
             openActivityWelcome();
         }

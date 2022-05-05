@@ -5,12 +5,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -24,27 +21,27 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
-import com.example.toigether.adapters.CustomPager;
 import com.example.toigether.adapters.TLGenerationAdapter;
-import com.example.toigether.generation.CityGenerationFragment;
 import com.example.toigether.items.Organization;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.w3c.dom.Text;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class OrganizationActivity extends AppCompatActivity {
 
-    private ArrayList<Organization> organizations;
+    private final FirebaseData db = new FirebaseData();
     private ArrayList<String> choice;
     private ImageView pic;
     private TextView name, content;
@@ -52,6 +49,7 @@ public class OrganizationActivity extends AppCompatActivity {
     private Dialog dialog;
     private SharedPreferences prefs;
     private TLGenerationAdapter tlGenerationAdapter;
+    private Organization organization = new Organization();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +58,6 @@ public class OrganizationActivity extends AppCompatActivity {
 
         prefs = this.getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
-        organizations = new ArrayList<>();
-//        organizations.add(new Organization(1L, "BN Event organization", "BN organization - adorable organization which u would like bla bla", R.drawable.organization_bm));
-//        organizations.add(new Organization(2L, "Gravum Event Masters", "We are adorable organization too, u would like us either a-la-la", R.drawable.gravum));
-//        organizations.add(new Organization(3L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.org));
-//        organizations.add(new Organization(4L, "Title Event Organizators", "We are organization with no name but we still believe that u will choose us", R.drawable.organization_wedding));
         String value = getIntent().getExtras().getString("id");
 
         pic = findViewById(R.id.orgPic);
@@ -74,8 +67,6 @@ public class OrganizationActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabLayoutOrganization);
         ViewPager viewPager = findViewById(R.id.pagerOrganization);
-//        CustomPager viewPager = new CustomPager(OrganizationActivity.this);
-//        viewPager.findViewById(R.id.pagerOrganization);
         tabLayout.setupWithViewPager(viewPager);
 
         tlGenerationAdapter = new TLGenerationAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -86,7 +77,7 @@ public class OrganizationActivity extends AppCompatActivity {
 
         viewPager.setAdapter(tlGenerationAdapter);
 
-        setOrganization(Long.valueOf(value));
+        setOrganization(value);
 
         meeting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,15 +94,19 @@ public class OrganizationActivity extends AppCompatActivity {
         });
     }
 
-    private void setOrganization(Long id) {
-        Organization organization = new Organization();
-        for (Organization org : organizations) {
-            if(org.getId().equals(id)) {
-                organization = org;
-                break;
+    private void setOrganization(String id) {
+//        Organization organization = db.getOrganization(id);
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("organizations").document("6zp4DBeuPNI6PR7S1DWI")
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                organization = documentSnapshot.toObject(Organization.class);
             }
-        }
-//        pic.setImageResource(organization.getImage());
+        });
+
+        Picasso.get().load(organization.getImage()).into(pic);
         name.setText(organization.getName());
         content.setText(organization.getDescription());
     }
