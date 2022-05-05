@@ -92,7 +92,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         Picasso.get().load(organization.getImage()).into(holder.image);
         holder.title.setText(organization.getName());
         holder.text.setText(organization.getDescription());
-        holder.rating.setText(String.valueOf(organization.getRating()));
+        if (!variant.equals("favourite"));
+            holder.rating.setText(String.valueOf(organization.getRating()));
     }
 
     @Override

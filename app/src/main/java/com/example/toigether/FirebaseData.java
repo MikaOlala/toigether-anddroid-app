@@ -1,6 +1,14 @@
 package com.example.toigether;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -20,18 +28,29 @@ import java.util.concurrent.CountDownLatch;
 public class FirebaseData {
     private Organization organization = new Organization();
     private ArrayList<Organization> organizations = new ArrayList<>();
-    private ArrayList<Organization> organizationsSide = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    public Organization getOrganization(String id) {
-        Log.e("FireData", String.valueOf(organization==null));
-        Log.e("FireData", organization.getId());
-        return organization;
-    }
 
     public interface OnGetDataListener {
         public void onStart();
         public void onSuccess(ArrayList<Organization> data);
+    }
+
+    public interface OnGetOneListener {
+        public void onStart();
+        public void onSuccess(Organization data);
+    }
+
+    public void getOrganization(String id, final OnGetOneListener listener) {
+        listener.onStart();
+
+        db.collection("organizations").document(id)
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                organization = documentSnapshot.toObject(Organization.class);
+                listener.onSuccess(organization);
+            }
+        });
     }
 
     public void getTopRating(final OnGetDataListener listener) {
@@ -81,39 +100,6 @@ public class FirebaseData {
         });
     }
 
-//    public void getGenerated(ArrayList<String> categories, ArrayList<String> services, String city, final OnGetDataListener listener) {
-//        listener.onStart();
-//
-//        getOrganizationsByParameter("categories", city, categories, new OnGetDataListener() {
-//            @Override
-//            public void onStart() {}
-//
-//            @Override
-//            public void onSuccess(ArrayList<Organization> data) {
-//                organizations = data;
-//            }
-//        });
-//
-//        getOrganizationsByParameter("gen_services", city, services, new OnGetDataListener() {
-//            @Override
-//            public void onStart() {}
-//
-//            @Override
-//            public void onSuccess(ArrayList<Organization> data) {
-//                organizationsSide = data;
-//            }
-//        });
-//
-//        Log.e("sizeArray", organizations.size() + " " + organizationsSide.size());
-//
-//        if(organizations.size()==0 || organizationsSide.size()==0)
-//            organizations.addAll(organizationsSide);
-//        else
-//            organizations.retainAll(organizationsSide);
-//
-//        listener.onSuccess(organizations);
-//    }
-
     public void getOrganizationsByParameter(String parameter, String city, ArrayList<String> attribute, final OnGetDataListener listener) {
         listener.onStart();
 
@@ -139,4 +125,9 @@ public class FirebaseData {
         });
     }
 
+    public void makeTextUnderlined(TextView text) {
+        SpannableString content = new SpannableString(text.getText().toString());
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        text.setText(content);
+    }
 }

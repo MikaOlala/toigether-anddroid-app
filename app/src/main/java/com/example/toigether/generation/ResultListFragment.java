@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
@@ -39,6 +40,8 @@ public class ResultListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_result_list, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewGeneration);
+        TextView sortBy = view.findViewById(R.id.sortBy);
+        db.makeTextUnderlined(sortBy);
 
         getOrganizations();
 
@@ -54,7 +57,6 @@ public class ResultListFragment extends Fragment {
     private void getOrganizations() {
         SharedPreferences prefs = getContext().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
-
         String category = getArguments().getString("categoryName");
         ArrayList<String> categories = new ArrayList<>();
         categories.add(category);
@@ -63,7 +65,7 @@ public class ResultListFragment extends Fragment {
 
         ArrayList<String> services = new ArrayList<>();
         Gson gson = new Gson();
-        String json = prefs.getString("services", null); // null if statement in query
+        String json = prefs.getString("services", null);
         if(json!=null) {
             Type type = new TypeToken<ArrayList<String>>() {}.getType();
             services = gson.fromJson(json, type);
@@ -99,13 +101,17 @@ public class ResultListFragment extends Fragment {
 
                         Log.e("sizeArray3", organizationsByCategory.size() + " ");
                         setAdapter(organizationsByCategory);
+
+                        adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+                            @Override
+                            public void onItemClick(int position) {
+                                openActivityOrganization(organizationsByCategory.get(position).getId());
+                            }
+                        });
                     }
                 });
-
             }
         });
-
-        Log.e("sizeArray not inner", organizationsByCategory.size() + " ");
     }
 
     private void setAdapter(ArrayList<Organization> organizations) {

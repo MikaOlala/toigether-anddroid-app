@@ -6,21 +6,20 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.text.SpannableString;
-import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
 
 public class ResultGenerationFragment extends Fragment {
 
     private SharedPreferences prefs;
+    private final FirebaseData db = new FirebaseData();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,9 +40,7 @@ public class ResultGenerationFragment extends Fragment {
         setText("quantityOfServices", service);
         setText("budget", budget);
 
-        SpannableString content = new SpannableString(service.getText().toString());
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        service.setText(content);
+        db.makeTextUnderlined(service);
 
         return view;
     }

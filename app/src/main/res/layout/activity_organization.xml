@@ -54,7 +54,6 @@
                 <TextView
                     style="@style/rating"
                     android:id="@+id/rating"
-                    android:text="10.0"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="@+id/heart"

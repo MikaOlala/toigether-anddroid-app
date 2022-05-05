@@ -28,10 +28,7 @@ import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.example.toigether.items.Organization;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -44,12 +41,9 @@ public class OrganizationActivity extends AppCompatActivity {
     private final FirebaseData db = new FirebaseData();
     private ArrayList<String> choice;
     private ImageView pic;
-    private TextView name, content;
-    private Button meeting;
+    private TextView name, content, rating;
     private Dialog dialog;
     private SharedPreferences prefs;
-    private TLGenerationAdapter tlGenerationAdapter;
-    private Organization organization = new Organization();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,26 +51,15 @@ public class OrganizationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_organization);
 
         prefs = this.getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
-
         String value = getIntent().getExtras().getString("id");
 
         pic = findViewById(R.id.orgPic);
         name = findViewById(R.id.orgName);
         content = findViewById(R.id.orgContent);
-        meeting = findViewById(R.id.makeMeeting);
+        rating = findViewById(R.id.rating);
+        Button meeting = findViewById(R.id.makeMeeting);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayoutOrganization);
-        ViewPager viewPager = findViewById(R.id.pagerOrganization);
-        tabLayout.setupWithViewPager(viewPager);
-
-        tlGenerationAdapter = new TLGenerationAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        tlGenerationAdapter.addFragment(new OrgProgramFragment(), "Программы");
-        tlGenerationAdapter.addFragment(new OrgPortfolioFragment(), "Портфолио");
-        tlGenerationAdapter.addFragment(new OrgReviewFragment(), "Отзыв");
-        tlGenerationAdapter.addFragment(new OrgTeamFragment(), "Команда");
-
-        viewPager.setAdapter(tlGenerationAdapter);
-
+        setTab();
         setOrganization(value);
 
         meeting.setOnClickListener(new View.OnClickListener() {
@@ -88,27 +71,39 @@ public class OrganizationActivity extends AppCompatActivity {
                 if (fragment != null) {
                     choice = fragment.getChoice();
                 }
-                Log.e("NULL OR WHAT", String.valueOf(fragment==null));
+
                 openDialog();
             }
         });
     }
 
     private void setOrganization(String id) {
-//        Organization organization = db.getOrganization(id);
-        final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("organizations").document("6zp4DBeuPNI6PR7S1DWI")
-                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        db.getOrganization(id, new FirebaseData.OnGetOneListener() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                organization = documentSnapshot.toObject(Organization.class);
+            public void onStart() {}
+
+            @Override
+            public void onSuccess(Organization data) {
+                Picasso.get().load(data.getImage()).into(pic);
+                name.setText(data.getName());
+                content.setText(data.getDescription());
+                rating.setText(String.valueOf(data.getRating()));
             }
         });
+    }
 
-        Picasso.get().load(organization.getImage()).into(pic);
-        name.setText(organization.getName());
-        content.setText(organization.getDescription());
+    private void setTab() {
+        TabLayout tabLayout = findViewById(R.id.tabLayoutOrganization);
+        ViewPager viewPager = findViewById(R.id.pagerOrganization);
+        tabLayout.setupWithViewPager(viewPager);
+
+        TLGenerationAdapter tlGenerationAdapter = new TLGenerationAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        tlGenerationAdapter.addFragment(new OrgProgramFragment(), "Программы");
+        tlGenerationAdapter.addFragment(new OrgPortfolioFragment(), "Портфолио");
+        tlGenerationAdapter.addFragment(new OrgReviewFragment(), "Отзыв");
+        tlGenerationAdapter.addFragment(new OrgTeamFragment(), "Команда");
+
+        viewPager.setAdapter(tlGenerationAdapter);
     }
 
     private void openDialog() {
@@ -130,11 +125,8 @@ public class OrganizationActivity extends AppCompatActivity {
             list.getLayoutParams().height = (int) ((int) dialog.getContext().getResources().getDisplayMetrics().heightPixels * 0.2);
         }
 
-        SpannableString content = new SpannableString(cancel.getText().toString());
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        cancel.setText(content);
+        db.makeTextUnderlined(cancel);
 
-        Log.e("Array choice", String.valueOf(choice));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(dialog.getContext(), R.layout.custom_list_view_dialog, choice);
         list.setAdapter(arrayAdapter);
 

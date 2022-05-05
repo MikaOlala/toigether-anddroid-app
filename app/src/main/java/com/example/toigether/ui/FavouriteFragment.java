@@ -61,7 +61,7 @@ public class FavouriteFragment extends Fragment {
                 adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        openActivityOrganization(organizations.get(position).getId());
+                        openActivityOrganization(data.get(position).getId());
                     }
                 });
             }
@@ -76,7 +76,5 @@ public class FavouriteFragment extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
-        Log.e("CardAdapter", String.valueOf(organizations.size()));
     }
 }
