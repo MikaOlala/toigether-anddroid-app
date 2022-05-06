@@ -63,6 +63,25 @@
         <item name="android:layout_marginStart">6sp</item>
     </style>
 
+    <!--    profile -->
+    <style name="profile_bold">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black_black</item>
+    </style>
+
+    <!--    profile  -->
+    <style name="profile_medium">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
     <!--    bold orange header - favourites - -->
     <style name="highlighted">
         <item name="fontFamily">@font/montserrat_bold</item>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.toigether.FirebaseData;
+import com.example.toigether.Profile;
 import com.example.toigether.R;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
@@ -35,10 +36,18 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        View profile = view.findViewById(R.id.profile);
         recyclerRating = view.findViewById(R.id.recyclerViewTopRating);
         recyclerRecently = view.findViewById(R.id.recyclerViewRecentlyWatched);
 
         setMainMenuData();
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityProfile();
+            }
+        });
 
         return view;
     }
@@ -49,12 +58,15 @@ public class HomeFragment extends Fragment {
         startActivity(intent);
     }
 
+    public void openActivityProfile() {
+        Intent intent = new Intent(getActivity(), Profile.class);
+        startActivity(intent);
+    }
+
     private void setMainMenuData() {
         db.getTopRating(new FirebaseData.OnGetDataListener() {
             @Override
-            public void onStart() {
-
-            }
+            public void onStart() {}
 
             @Override
             public void onSuccess(ArrayList<Organization> data) {

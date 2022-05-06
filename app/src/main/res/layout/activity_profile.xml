@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:orientation="vertical"
+    android:paddingHorizontal="21sp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135sp"
+        android:gravity="center_vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="91sp"
+            android:layout_height="91sp"
+            app:cardCornerRadius="50sp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ex_avatar"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="13sp">
+
+            <TextView
+                style="@style/profile_bold"
+                android:id="@+id/name"
+                android:text="@string/ex_name"
+                android:layout_marginBottom="6sp"/>
+
+            <TextView
+                style="@style/profile_medium"
+                android:id="@+id/phone"
+                android:text="@string/ex_phone"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <TextView
+        style="@style/profile_medium"
+        android:text="@string/contracts_with_companies"/>
+
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/current"
+        android:text="@string/current_events"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/past"
+        android:text="@string/past_events"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/frozen"
+        android:text="@string/frozen_events"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+
+    <TextView
+        style="@style/profile_medium"
+        android:text="@string/settings"
+        android:layout_marginTop="12sp"/>
+
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/city"
+        android:text="@string/city"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/theme"
+        android:text="@string/theme_choice"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/notifications"
+        android:text="@string/notifications"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/password"
+        android:text="@string/password_change"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+
+    <TextView
+        style="@style/profile_medium"
+        android:text="@string/additional"
+        android:layout_marginTop="12sp"/>
+
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/support"
+        android:text="@string/support"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/project"
+        android:text="@string/project"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/partner"
+        android:text="@string/partner"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/faq"
+        android:text="@string/faq"
+        android:paddingVertical="8sp"
+        android:paddingHorizontal="17sp"/>
+
+</LinearLayout>

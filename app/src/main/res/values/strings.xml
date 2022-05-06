@@ -63,4 +63,19 @@
     <string name="toast_text_2">Свои заявки вы можете посмотреть в кабинете</string>
     <string name="toast_text_1">Заявка готова. С вами скоро свяжется менеджер</string>
     <string name="sort">Сортировка:</string>
+    <string name="ex_name">Ассель</string>
+    <string name="ex_phone">+7 700 987 65 43</string>
+    <string name="contracts_with_companies">Договора с компаниями</string>
+    <string name="current_events">Действующие мероприятия</string>
+    <string name="past_events">Прошедшие мероприятия</string>
+    <string name="frozen_events">Замороженные мероприятия</string>
+    <string name="settings">Настройки</string>
+    <string name="theme_choice">Выбор темы</string>
+    <string name="notifications">Push-уведомления</string>
+    <string name="password_change">Смена пароля</string>
+    <string name="support">Служба поддержки</string>
+    <string name="project">О проекте</string>
+    <string name="partner">Стать партнером</string>
+    <string name="faq">F.A.Q.</string>
+    <string name="additional">Дополнительно</string>
 </resources>

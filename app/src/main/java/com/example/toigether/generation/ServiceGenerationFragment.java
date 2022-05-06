@@ -56,9 +56,11 @@ public class ServiceGenerationFragment extends Fragment {
                     for (int j = 1; j < servicesList.getCount(); j++) {
                         servicesList.setItemChecked(j, check);
                     }
-
-                    choice = new ArrayList<>(services);
-                    choice.remove("Выбрать всё");
+                    if (check) {
+                        choice = new ArrayList<>(services);
+                        choice.remove("Выбрать всё");
+                    } else
+                        choice.removeAll(choice);
                 }
                 else {
                     check = servicesList.isItemChecked(i);

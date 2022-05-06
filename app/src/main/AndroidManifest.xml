@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Toigether">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
             android:name=".organizations.OrganizationActivity"
             android:exported="false" />
         <activity
