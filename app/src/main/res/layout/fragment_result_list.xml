@@ -8,6 +8,7 @@
     android:padding="18sp">
 
     <TextView
+        android:id="@+id/resultHeader"
         style="@style/highlighted_thin"
         android:layout_width="271sp"
         android:text="@string/generation_results_header"

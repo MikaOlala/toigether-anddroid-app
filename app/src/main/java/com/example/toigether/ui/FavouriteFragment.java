@@ -1,11 +1,13 @@
 package com.example.toigether.ui;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +31,7 @@ public class FavouriteFragment extends Fragment {
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private FirebaseData db = new FirebaseData();
+    private Dialog dialog;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -51,7 +54,7 @@ public class FavouriteFragment extends Fragment {
         db.getTopRating(new FirebaseData.OnGetDataListener() {
             @Override
             public void onStart() {
-
+                openDialog();
             }
 
             @Override
@@ -64,6 +67,8 @@ public class FavouriteFragment extends Fragment {
                         openActivityOrganization(data.get(position).getId());
                     }
                 });
+
+                dialog.cancel();
             }
         });
     }
@@ -76,5 +81,14 @@ public class FavouriteFragment extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void openDialog() {
+        dialog = new Dialog(this.getContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        dialog.setContentView(R.layout.dialog_loading);
+
+        dialog.show();
     }
 }

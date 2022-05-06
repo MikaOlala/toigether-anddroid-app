@@ -1,5 +1,6 @@
 package com.example.toigether.generation;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.example.toigether.FirebaseData;
@@ -33,6 +35,8 @@ public class ResultListFragment extends Fragment {
     private CardAdapter adapter;
     private final FirebaseData db = new FirebaseData();
     private ArrayList<Organization> organizationsByCategory = new ArrayList<>();
+    private Dialog dialog;
+    private TextView header;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +45,7 @@ public class ResultListFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewGeneration);
         TextView sortBy = view.findViewById(R.id.sortBy);
+        header = view.findViewById(R.id.resultHeader);
         db.makeTextUnderlined(sortBy);
 
         getOrganizations();
@@ -76,12 +81,13 @@ public class ResultListFragment extends Fragment {
             ArrayList<Organization> organizationsByServices = new ArrayList<>();
 
             @Override
-            public void onStart() {}
+            public void onStart() {
+                openDialog();
+            }
 
             @Override
             public void onSuccess(ArrayList<Organization> data) {
                 organizationsByCategory = data;
-                Log.e("sizeArray1", organizationsByCategory.size() + " ");
                 db.getOrganizationsByParameter("gen_services", city, finalServices, new FirebaseData.OnGetDataListener() {
                     @Override
                     public void onStart() {}
@@ -89,7 +95,6 @@ public class ResultListFragment extends Fragment {
                     @Override
                     public void onSuccess(ArrayList<Organization> data) {
                         organizationsByServices = data;
-                        Log.e("sizeArray2", organizationsByServices.size() + " ");
 
                         if(organizationsByCategory.size()!=0 || organizationsByServices.size()!=0) {
                             for(Organization o : organizationsByCategory)
@@ -99,15 +104,19 @@ public class ResultListFragment extends Fragment {
                         organizationsByCategory.addAll(organizationsByServices);
                         organizationsByCategory.sort(Comparator.comparing(Organization::getRating).reversed());
 
-                        Log.e("sizeArray3", organizationsByCategory.size() + " ");
-                        setAdapter(organizationsByCategory);
+                        if (organizationsByCategory.size()==0)
+                            changeHeader();
 
-                        adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
-                            @Override
-                            public void onItemClick(int position) {
-                                openActivityOrganization(organizationsByCategory.get(position).getId());
-                            }
-                        });
+                        else {
+                            setAdapter(organizationsByCategory);
+                            adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+                                @Override
+                                public void onItemClick(int position) {
+                                    openActivityOrganization(organizationsByCategory.get(position).getId());
+                                }
+                            });
+                        }
+                        dialog.cancel();
                     }
                 });
             }
@@ -124,5 +133,18 @@ public class ResultListFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         Log.e("CardAdapter", String.valueOf(organizations.size()));
+    }
+
+    private void openDialog() {
+        dialog = new Dialog(this.getContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        dialog.setContentView(R.layout.dialog_loading);
+
+        dialog.show();
+    }
+
+    private void changeHeader() {
+        header.setText("К сожалению ничего подходящего не нашлось.");
     }
 }

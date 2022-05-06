@@ -1,5 +1,6 @@
 package com.example.toigether;
 
+import android.app.Dialog;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,7 +83,8 @@ public class FirebaseData {
         ArrayList<String> categories = new ArrayList<>();
         categories.add(category);
 
-        db.collection("organizations").orderBy("rating", Query.Direction.DESCENDING).whereArrayContainsAny("categories", categories)
+        db.collection("organizations")
+                .whereArrayContainsAny("categories", categories)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -130,4 +133,5 @@ public class FirebaseData {
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         text.setText(content);
     }
+
 }

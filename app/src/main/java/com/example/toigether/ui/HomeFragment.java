@@ -1,5 +1,6 @@
 package com.example.toigether.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.organizations.OrganizationActivity;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerRating;
     private RecyclerView recyclerRecently;
+    private CardAdapter adapterRating;
+    private CardAdapter adapterRecently;
     private final FirebaseData db = new FirebaseData();
 
     @Override
@@ -39,6 +43,12 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    public void openActivityOrganization(String id) {
+        Intent intent = new Intent(getActivity(), OrganizationActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
     private void setMainMenuData() {
         db.getTopRating(new FirebaseData.OnGetDataListener() {
             @Override
@@ -48,11 +58,17 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onSuccess(ArrayList<Organization> data) {
-                setAdapter(data, recyclerRating);
+                setAdapter(data, recyclerRating, "adapterRating");
+                adapterRating.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        openActivityOrganization(data.get(position).getId());
+                    }
+                });
             }
         });
 
-        db.getOrganizationByCategory("День рождения", new FirebaseData.OnGetDataListener() {
+        db.getOrganizationByCategory("Вечеринка", new FirebaseData.OnGetDataListener() {
             @Override
             public void onStart() {
 
@@ -60,19 +76,31 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onSuccess(ArrayList<Organization> data) {
-                setAdapter(data, recyclerRecently);
+                setAdapter(data, recyclerRecently, "adapterRecently");
+                adapterRecently.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        openActivityOrganization(data.get(position).getId());
+                    }
+                });
             }
         });
     }
 
-    private void setAdapter(ArrayList<Organization> organizations, RecyclerView recyclerView) {
+    private void setAdapter(ArrayList<Organization> organizations, RecyclerView recyclerView, String recyclerName) {
         RecyclerView.LayoutManager layoutManager;
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        CardAdapter adapter = new CardAdapter(organizations, "main");
+        if (recyclerName.equals("adapterRating")) {
+            adapterRating = new CardAdapter(organizations, "main");
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapterRating);
+        } else {
+            adapterRecently = new CardAdapter(organizations, "main");
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(adapterRecently);
+        }
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
         Log.e("CardAdapter", String.valueOf(organizations.size()));
     }

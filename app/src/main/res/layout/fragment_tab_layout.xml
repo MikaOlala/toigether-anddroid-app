@@ -63,7 +63,7 @@
                 app:sv_doneStepMarkColor="@color/white"
 
                 app:sv_selectedCircleColor="@color/orange"
-                app:sv_nextStepCircleColor="@color/gray_step"
+                app:sv_nextStepCircleColor="@color/light_gray"
                 app:sv_doneCircleColor="@color/orange"
 
                 app:sv_doneCircleRadius="24sp"
@@ -74,8 +74,7 @@
                 app:sv_stepsNumber="6"
                 app:sv_nextStepCircleEnabled="true"
                 app:sv_typeface="@font/montserrat_medium"
-                app:sv_textSize="15sp"
-                />
+                app:sv_textSize="15sp" />
 
         </LinearLayout>
     </HorizontalScrollView>
