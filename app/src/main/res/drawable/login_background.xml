@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape>
+            <solid android:color="#F5000000"/>
+            <gradient android:startColor="#D4A368"
+                android:endColor="#ED7D2B"
+                android:type="linear"
+                android:angle="-45"/>
+        </shape>
+    </item>
+    <item>
+        <bitmap android:alpha="0.2" android:src="@drawable/back_log" />
+    </item>
+</layer-list>

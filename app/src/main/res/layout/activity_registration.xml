@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/back"
+        android:layout_width="16sp"
+        android:layout_height="28sp"
+        android:background="@drawable/ic_backward"
+        android:layout_margin="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageView
+        android:layout_width="140sp"
+        android:layout_height="140sp"
+        android:src="@drawable/ic_logo"
+        android:layout_marginTop="18sp"
+        app:layout_constraintTop_toBottomOf="@id/back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_creating"
+        android:textColor="@color/white"
+        android:fontFamily="@font/geometria_medium"
+        android:textSize="28sp"
+
+        android:layout_marginBottom="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/input_bars"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/input_bars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:paddingHorizontal="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <EditText
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+
+            android:background="@drawable/input_log_background"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="21sp"
+            android:fontFamily="@font/geometria"
+            android:hint="@string/user_name"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/cheerless_white"
+            android:textSize="20sp"
+
+            android:padding="17sp"
+            android:layout_marginBottom="14sp"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+
+            android:background="@drawable/input_log_background"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="21sp"
+            android:fontFamily="@font/geometria"
+            android:hint="@string/ex_phone_exes"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:textColor="@color/white"
+            android:textColorHint="@color/cheerless_white"
+            android:textSize="20sp"
+
+            android:padding="17sp"
+            android:layout_marginBottom="14sp"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:background="@drawable/input_log_background"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="21sp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/cheerless_white"
+            android:fontFamily="@font/geometria"
+            android:hint="@string/password"
+
+            android:padding="17sp"
+            android:layout_marginBottom="14sp"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/passwordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:background="@drawable/input_log_background"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="21sp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/cheerless_white"
+            android:fontFamily="@font/geometria"
+            android:hint="@string/password"
+
+            android:padding="17sp"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password_error"
+        android:textSize="15sp"
+        android:fontFamily="@font/geometria_medium"
+        android:textColor="@color/red_warning"
+
+        android:visibility="invisible"
+        android:layout_marginTop="5sp"
+        android:layout_marginHorizontal="18sp"
+        app:layout_constraintTop_toBottomOf="@id/input_bars"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/button"
+        android:id="@+id/create"
+        android:layout_height="58sp"
+        android:layout_width="match_parent"
+        android:text="@string/create"
+        android:textSize="18sp"
+        android:fontFamily="@font/geometria_bold"
+        android:layout_marginHorizontal="18sp"
+        android:layout_marginTop="28sp"
+        app:layout_constraintTop_toBottomOf="@+id/warning"/>
+
+    <LinearLayout
+        android:id="@+id/conditions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="14sp"
+        android:paddingHorizontal="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/create">
+        <TextView
+            android:id="@+id/forgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/by_creating_acc"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/geometria"/>
+        <TextView
+            android:id="@+id/termsConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/terms_condition"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/geometria_bold"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

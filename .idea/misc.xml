@@ -3,14 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable-v24/input_login_background.xml" value="0.317" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable-v24/login_background.xml" value="0.317" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/app_button.xml" value="0.2435" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/app_button_light.xml" value="0.2435" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/calendar_stroke_background.xml" value="0.317" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/heart.xml" value="0.176" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/ic_arrow.xml" value="0.2765" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/input_bar_background.xml" value="0.317" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/input_log_background.xml" value="0.317" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/login_background.xml" value="0.317" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/orange_border.xml" value="0.317" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/rounds_list.xml" value="0.346" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/drawable/welcome_background.xml" value="0.317" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_main.xml" value="0.39266304347826086" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_organization.xml" value="0.264" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_profile.xml" value="0.4" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/activity_registration.xml" value="0.3296875" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/card_item.xml" value="0.3463949843260188" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/card_item_generation_results.xml" value="0.19655521783181357" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/card_item_main_page.xml" value="0.536" />
@@ -22,6 +32,7 @@
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/fragment_result_list.xml" value="0.4041666666666667" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/fragment_tab_layout.xml" value="0.28045685279187815" />
+        <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/generation_budget.xml" value="0.266304347826087" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/generation_result.xml" value="0.19972826086956522" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/generation_service.xml" value="0.29257246376811596" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/org_program_fragment.xml" value="0.2" />

@@ -7,14 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="black_trans">#65000000</color>
+    <color name="black_super_trans">#33000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
 
 
     <color name="green_trans">#CB95C180</color>
     <color name="red_trans">#CBC18080</color>
+    <color name="red_warning">#5A0303</color>
     <color name="orange">#ED7D2B</color>
     <color name="light_orange">#FFB681</color>
+    <color name="cheerless_white">#99EBEBF5</color>
     <color name="light_gray">#CED7DF</color>
     <color name="euh_gray">#A1A1A1</color>
     <color name="dirty_gray">#9A9A9A</color>

@@ -69,7 +69,6 @@
     <string name="current_events">Действующие мероприятия</string>
     <string name="past_events">Прошедшие мероприятия</string>
     <string name="frozen_events">Замороженные мероприятия</string>
-    <string name="settings">Настройки</string>
     <string name="theme_choice">Выбор темы</string>
     <string name="notifications">Push-уведомления</string>
     <string name="password_change">Смена пароля</string>
@@ -78,4 +77,17 @@
     <string name="partner">Стать партнером</string>
     <string name="faq">F.A.Q.</string>
     <string name="additional">Дополнительно</string>
+    <string name="user_name">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="log_in_profile">Вход в профиль</string>
+    <string name="password_error">Неверный пароль. Пожалуйста, введите снова</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="restore_acc">Восстановление учетной записи</string>
+    <string name="enter">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="profile_creating">Создание профиля</string>
+    <string name="ex_phone_exes">8 (7xx) xxx-xx-xx</string>
+    <string name="create">Создать</string>
+    <string name="terms_condition">Условиями пользования и Политикой конфиденциальности</string>
+    <string name="by_creating_acc">Создавая аккаунт, вы соглашаетесь с</string>
 </resources>
