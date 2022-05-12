@@ -25,19 +25,19 @@
             android:id="@+id/back"
             android:layout_width="16sp"
             android:layout_height="28sp"
-            android:background="@drawable/ic_backward"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:background="@drawable/ic_backward" />
 
         <TextView
             android:id="@+id/registration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/registration"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/geometria_medium"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/geometria_medium"
+            android:text="@string/registration"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
     </RelativeLayout>
 
 
@@ -85,7 +85,7 @@
             android:drawablePadding="21sp"
             android:fontFamily="@font/geometria"
             android:hint="@string/user_name"
-            android:imeOptions="actionDone"
+            android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"
             android:textColorHint="@color/cheerless_white"
@@ -148,6 +148,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
         <TextView
+            android:id="@+id/restoreText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/restore_acc"

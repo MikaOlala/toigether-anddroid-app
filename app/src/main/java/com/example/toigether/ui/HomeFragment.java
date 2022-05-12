@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.toigether.FirebaseData;
 import com.example.toigether.Profile;
+import com.example.toigether.Login;
 import com.example.toigether.R;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
@@ -45,7 +46,10 @@ public class HomeFragment extends Fragment {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivityProfile();
+                if (db.isAuthenticated())
+                    openActivityProfile();
+                else
+                    openActivityLogin();
             }
         });
 
@@ -60,6 +64,11 @@ public class HomeFragment extends Fragment {
 
     public void openActivityProfile() {
         Intent intent = new Intent(getActivity(), Profile.class);
+        startActivity(intent);
+    }
+
+    public void openActivityLogin() {
+        Intent intent = new Intent(getActivity(), Login.class);
         startActivity(intent);
     }
 

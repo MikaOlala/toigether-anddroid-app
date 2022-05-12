@@ -18,6 +18,9 @@ import com.example.toigether.items.Organization;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -31,6 +34,7 @@ public class FirebaseData {
     private Organization organization = new Organization();
     private ArrayList<Organization> organizations = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public interface OnGetDataListener {
         public void onStart();
@@ -127,6 +131,12 @@ public class FirebaseData {
             }
         });
     }
+
+    public boolean isAuthenticated() {
+        FirebaseUser user = auth.getCurrentUser();
+        return user != null;
+    }
+
 
     public void makeTextUnderlined(TextView text) {
         SpannableString content = new SpannableString(text.getText().toString());
