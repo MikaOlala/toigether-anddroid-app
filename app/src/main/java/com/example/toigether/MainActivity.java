@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         prefs = getSharedPreferences("com.example.toigether", MODE_PRIVATE);
 
-//        check();
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
@@ -58,20 +56,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WelcomePage.class);
         startActivity(intent);
     }
-
-//вывод всех причастных участников
-//    private void check () {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("team_members").whereEqualTo("org_id", "6zp4DBeuPNI6PR7S1DWI")
-//            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                    for (QueryDocumentSnapshot document : task.getResult()) {
-//                        TeamMember teamMember = document.toObject(TeamMember.class);
-//                        Log.e("MainActivity check", teamMember.toString());
-//                    }
-//                }
-//        });
-//    }
-
 }

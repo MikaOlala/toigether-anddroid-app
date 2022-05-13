@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Toigether">
         <activity
+            android:name=".events.EventActivity"
+            android:exported="false" />
+        <activity
             android:name=".Registration"
             android:exported="false" />
         <activity

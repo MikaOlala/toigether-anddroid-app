@@ -67,7 +67,7 @@ public class OrganizationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 FragmentManager fm = getSupportFragmentManager();
                 OrgProgramFragment fragment = (OrgProgramFragment)fm.findFragmentById(R.id.orgProgramFragment);
-
+                Log.e("fragment program null", String.valueOf(fragment==null));
                 if (fragment != null) {
                     choice = fragment.getChoice();
                 }

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.toigether.items.Event;
 import com.example.toigether.items.Organization;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class FirebaseData {
     private Organization organization = new Organization();
+    private Event event = new Event();
     private ArrayList<Organization> organizations = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -44,6 +46,16 @@ public class FirebaseData {
     public interface OnGetOneListener {
         public void onStart();
         public void onSuccess(Organization data);
+    }
+
+    public interface OnGetEventsListener {
+        public void onStart();
+        public void onSuccess(ArrayList<Event> events);
+    }
+
+    public interface OnGetEventListener {
+        public void onStart();
+        public void onSuccess(Event event);
     }
 
     public void getOrganization(String id, final OnGetOneListener listener) {
@@ -128,6 +140,40 @@ public class FirebaseData {
                 }
 
                 listener.onSuccess(org);
+            }
+        });
+    }
+
+    public void getPortfolioByOrganization(String id, final OnGetEventsListener listener) {
+        listener.onStart();
+        ArrayList<Event> events = new ArrayList<>();
+
+        db.collection("events").whereEqualTo("organizator_id", id)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Event event = document.toObject(Event.class);
+                        event.setId(document.getId());
+                        events.add(event);
+                    }
+                }
+                else
+                    Log.e("FirebaseData", "portfolio data getting error");
+                listener.onSuccess(events);
+            }
+        });
+    }
+
+    public void getEvent(String id, final OnGetEventListener listener) {
+        listener.onStart();
+        db.collection("events").document(id)
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Event event = documentSnapshot.toObject(Event.class);
+                listener.onSuccess(event);
             }
         });
     }

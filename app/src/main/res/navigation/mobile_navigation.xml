@@ -53,4 +53,9 @@
         android:name="com.example.toigether.organizations.OrgProgramFragment"
         android:label="org_program_fragment"
         tools:layout="@layout/org_program_fragment" />
+    <fragment
+        android:id="@+id/orgPortfolioFragment"
+        android:name="com.example.toigether.organizations.OrgPortfolioFragment"
+        android:label="org_portfolio_fragment"
+        tools:layout="@layout/org_portfolio_fragment" />
 </navigation>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="66sp"
+    android:layout_marginBottom="12sp"
+    android:elevation="7sp"
+    app:cardElevation="7sp"
+    app:cardCornerRadius="4sp"
+    android:layout_marginHorizontal="3sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F4F4"
+        android:paddingEnd="9sp"
+        tools:ignore="RtlSymmetry">
+
+        <ImageView
+            android:id="@+id/eventPic"
+            android:layout_width="87sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ex_avatar"/>
+
+        <LinearLayout
+            android:id="@+id/textColumn"
+            android:layout_width="184sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="14sp"
+            android:layout_marginTop="13sp">
+
+            <TextView
+                style="@style/card_header"
+                android:id="@+id/eventTitle"
+                android:layout_marginBottom="6sp" />
+
+            <TextView
+                style="@style/card_content"
+                android:id="@+id/eventDate"
+                android:text="@string/ex_date"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/show"
+            style="@style/button"
+            android:layout_width="49sp"
+            android:layout_height="18sp"
+            android:layout_weight="1"
+            android:textSize="7sp"
+            android:text="@string/show"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:layout_gravity="center" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
