@@ -7,14 +7,15 @@
     tools:context=".events.EventActivity"
     android:orientation="vertical"
     android:paddingVertical="14sp"
-    android:paddingHorizontal="21sp">
+    >
 
     <LinearLayout
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="21sp">
         <View
             android:layout_width="6sp"
             android:layout_height="12sp"
@@ -35,7 +36,8 @@
         android:layout_height="wrap_content"
         android:maxLines="3"
         android:textSize="14sp"
-        android:layout_marginTop="19sp"/>
+        android:layout_marginTop="19sp"
+        android:paddingHorizontal="21sp"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutEvent"
@@ -45,11 +47,17 @@
         app:tabSelectedTextColor="@color/orange"
         app:tabTextColor="@color/boring_gray"
         app:tabIndicatorColor="@color/transparent"
-        android:layout_marginVertical="14sp"/>
+        app:tabPaddingBottom="0sp"
+        app:tabPaddingEnd="0sp"
+        app:tabPaddingStart="0sp"
+        app:tabPaddingTop="0sp"
+        android:layout_marginVertical="14sp"
+        android:layout_marginEnd="21sp"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pagerEvent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="21sp"/>
 
 </LinearLayout>

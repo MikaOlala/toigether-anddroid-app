@@ -1,6 +1,7 @@
 package com.example.toigether.items;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Event {
     private String id;
@@ -9,12 +10,13 @@ public class Event {
     private String description;
     private String cost;
     private ArrayList<String> images;
-    private String menu;
+    private Map<String, String> menu;
     private ArrayList<String> services;
     private String decorations;
     private String organizator_id;
 
-    public Event(String id, String name, String category, String description, String cost, ArrayList<String> images, String menu, ArrayList<String> services, String decorations, String organizator_id) {
+    public Event(String id, String name, String category, String description, String cost, ArrayList<String> images,
+                 Map<String, String> menu, ArrayList<String> services, String decorations, String organizator_id) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -78,11 +80,11 @@ public class Event {
         this.images = images;
     }
 
-    public String getMenu() {
+    public Map<String, String> getMenu() {
         return menu;
     }
 
-    public void setMenu(String menu) {
+    public void setMenu(Map<String, String> menu) {
         this.menu = menu;
     }
 

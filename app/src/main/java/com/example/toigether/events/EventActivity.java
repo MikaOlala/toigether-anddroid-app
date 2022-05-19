@@ -30,7 +30,7 @@ public class EventActivity extends AppCompatActivity {
         View back = findViewById(R.id.back);
         title = findViewById(R.id.eventTitle);
 
-        setTab();
+        setTab(id);
         setEvent(id);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -41,16 +41,16 @@ public class EventActivity extends AppCompatActivity {
         });
     }
 
-    private void setTab() {
+    private void setTab(String id) {
         TabLayout tabLayout = findViewById(R.id.tabLayoutEvent);
         ViewPager viewPager = findViewById(R.id.pagerEvent);
         tabLayout.setupWithViewPager(viewPager);
 
         TLGenerationAdapter tlGenerationAdapter = new TLGenerationAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        tlGenerationAdapter.addFragment(new EventGalleryFragment(), "Галерея");
-        tlGenerationAdapter.addFragment(new EventMenuFragment(), "Меню");
-        tlGenerationAdapter.addFragment(new EventServiceFragment(), "Услуги");
-        tlGenerationAdapter.addFragment(new EventDecorationFragment(), "Декорации");
+        tlGenerationAdapter.addFragment(new EventGalleryFragment(), "Галерея", id);
+        tlGenerationAdapter.addFragment(new EventMenuFragment(), "Меню", id);
+        tlGenerationAdapter.addFragment(new EventServiceFragment(), "Услуги", id);
+        tlGenerationAdapter.addFragment(new EventDecorationFragment(), "Декорации", id);
 
         viewPager.setAdapter(tlGenerationAdapter);
     }

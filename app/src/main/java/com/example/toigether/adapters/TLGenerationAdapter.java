@@ -1,5 +1,7 @@
 package com.example.toigether.adapters;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,6 +23,7 @@ public class TLGenerationAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+
         return fragmentArrayList.get(position);
     }
 
@@ -30,6 +33,14 @@ public class TLGenerationAdapter extends FragmentPagerAdapter {
     }
 
     public void addFragment(Fragment fragment, String title) {
+        fragmentArrayList.add(fragment);
+        fragmentTitle.add(title);
+    }
+
+    public void addFragment(Fragment fragment, String title, String id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        fragment.setArguments(bundle);
         fragmentArrayList.add(fragment);
         fragmentTitle.add(title);
     }
