@@ -18,7 +18,6 @@ public class EventActivity extends AppCompatActivity {
 
     private TextView title;
     private FirebaseData db = new FirebaseData();
-    private Event ev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,6 @@ public class EventActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(Event event) {
-                ev = event;
                 title.setText(event.getName());
             }
         });
