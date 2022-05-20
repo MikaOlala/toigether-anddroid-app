@@ -59,6 +59,16 @@ public class Registration extends AppCompatActivity {
         String password = this.password.getText().toString();
         String passwordConfirm = this.passwordConfirm.getText().toString();
 
+        boolean validPhone = false;
+        if (phone.startsWith("+")) {
+            if (phone.length() == 12)
+                validPhone = true;
+        }
+        else {
+            if (phone.length() == 11)
+                validPhone = true;
+        }
+
         if(email.equals("") || phone.equals("") || password.equals("") || passwordConfirm.equals("")) {
             warning.setText(getResources().getString(R.string.login_null));
             warning.setVisibility(View.VISIBLE);
@@ -67,13 +77,19 @@ public class Registration extends AppCompatActivity {
             warning.setText(getResources().getString(R.string.password_equal));
             warning.setVisibility(View.VISIBLE);
         }
+        else if (!validPhone) {
+            warning.setText(getResources().getString(R.string.phone_invalid));
+            warning.setVisibility(View.VISIBLE);
+        }
         else {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful())
+                    if (task.isSuccessful()) {
+                        db.createUser(email, phone);
                         finish();
+                    }
                     else {
                         warning.setText(getResources().getString(R.string.user_exist));
                         warning.setVisibility(View.VISIBLE);

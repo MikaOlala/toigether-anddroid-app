@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayout;
 public class EventActivity extends AppCompatActivity {
 
     private TextView title;
-    private FirebaseData db = new FirebaseData();
+    private final FirebaseData db = new FirebaseData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

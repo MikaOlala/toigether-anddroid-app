@@ -32,13 +32,13 @@
             <TextView
                 style="@style/profile_bold"
                 android:id="@+id/name"
-                android:text="@string/ex_name"
+                android:text=""
                 android:layout_marginBottom="6sp"/>
 
             <TextView
                 style="@style/profile_medium"
                 android:id="@+id/phone"
-                android:text="@string/ex_phone"/>
+                android:text=""/>
         </LinearLayout>
     </LinearLayout>
     
@@ -124,5 +124,14 @@
         android:text="@string/faq"
         android:paddingVertical="8sp"
         android:paddingHorizontal="17sp"/>
+
+    <TextView
+        style="@style/profile_bold"
+        android:id="@+id/logout"
+
+        android:text="@string/logout"
+        android:textColor="@color/red_warning"
+        android:layout_marginTop="21sp"
+        android:paddingHorizontal="17sp" />
 
 </LinearLayout>

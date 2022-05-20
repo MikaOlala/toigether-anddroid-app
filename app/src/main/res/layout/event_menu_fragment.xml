@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".events.EventMenuFragment">
 
+    <TextView
+        android:id="@+id/noMenu"
+        style="@style/header_black_little"
+        android:text="@string/no_menu"
+        android:visibility="invisible"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMenu"
         android:layout_width="match_parent"

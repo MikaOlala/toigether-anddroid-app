@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
@@ -30,6 +31,7 @@ public class EventMenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.event_menu_fragment, container, false);
 
+        TextView noMenu = view.findViewById(R.id.noMenu);
         String id = getArguments().getString("id");
         recyclerView = view.findViewById(R.id.recyclerViewMenu);
 
@@ -42,6 +44,8 @@ public class EventMenuFragment extends Fragment {
                 public void onSuccess(Event event) {
                     if (event.getMenu()!=null)
                         setAdapter(event.getMenu());
+                    else
+                        noMenu.setVisibility(View.VISIBLE);
                 }
             });
         }

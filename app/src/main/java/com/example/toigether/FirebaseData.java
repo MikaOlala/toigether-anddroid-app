@@ -2,6 +2,7 @@ package com.example.toigether;
 
 import android.app.Dialog;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,12 +17,16 @@ import androidx.annotation.NonNull;
 
 import com.example.toigether.items.Event;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.Request;
+import com.example.toigether.items.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -33,29 +38,33 @@ import java.util.concurrent.CountDownLatch;
 
 public class FirebaseData {
     private Organization organization = new Organization();
-    private Event event = new Event();
-    private ArrayList<Organization> organizations = new ArrayList<>();
+    private final ArrayList<Organization> organizations = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private final FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public interface OnGetDataListener {
-        public void onStart();
-        public void onSuccess(ArrayList<Organization> data);
+        void onStart();
+        void onSuccess(ArrayList<Organization> data);
     }
 
     public interface OnGetOneListener {
-        public void onStart();
-        public void onSuccess(Organization data);
+        void onStart();
+        void onSuccess(Organization data);
     }
 
     public interface OnGetEventsListener {
-        public void onStart();
-        public void onSuccess(ArrayList<Event> events);
+        void onStart();
+        void onSuccess(ArrayList<Event> events);
     }
 
     public interface OnGetEventListener {
-        public void onStart();
-        public void onSuccess(Event event);
+        void onStart();
+        void onSuccess(Event event);
+    }
+
+    public interface OnGetUserListener {
+        void onStart();
+        void onSuccess(User user);
     }
 
     public void getOrganization(String id, final OnGetOneListener listener) {
@@ -166,6 +175,30 @@ public class FirebaseData {
         });
     }
 
+    public void doRequest(ArrayList<String> services, String organization) {
+        FirebaseUser user = auth.getCurrentUser();
+        String strServices = TextUtils.join(", ", services);
+
+        db.collection("request").add(new Request(user.getEmail(), organization, strServices))
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("doRequest", e.toString());
+            }
+        });
+    }
+
+    public void createUser(String email, String phone) {
+        String name = email.substring(0, email.indexOf('@'));
+        db.collection("users").add(new User(email, phone, name, null, null))
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("createUser", e.toString());
+                    }
+                });
+    }
+
     public void getEvent(String id, final OnGetEventListener listener) {
         listener.onStart();
         db.collection("events").document(id)
@@ -183,6 +216,22 @@ public class FirebaseData {
         return user != null;
     }
 
+    public void getUser(String email, final OnGetUserListener listener) {
+        listener.onStart();
+        db.collection("users").whereEqualTo("email", email)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    User user = new User();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        user = document.toObject(User.class);
+                    }
+                    listener.onSuccess(user);
+                }
+            }
+        });
+    }
 
     public void makeTextUnderlined(TextView text) {
         SpannableString content = new SpannableString(text.getText().toString());

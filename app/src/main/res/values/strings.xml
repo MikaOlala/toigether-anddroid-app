@@ -92,9 +92,12 @@
     <string name="by_creating_acc">Создавая аккаунт, вы соглашаетесь с</string>
     <string name="login_null">Некоторые поля остались незаполненными</string>
     <string name="password_equal">Пароли не совпадают</string>
+    <string name="phone_invalid">Не валидный номер телефона</string>
     <string name="user_exist">Данный адрес уже используется</string>
     <string name="show">Показать</string>
     <string name="ex_date">22.07.2021</string>
     <string name="no_portfolio">У организации пока нет проведенных мероприятий.</string>
     <string name="back">Назад</string>
+    <string name="no_menu">Стандартное меню или Меню отсутствовало</string>
+    <string name="logout">Выйти</string>
 </resources>

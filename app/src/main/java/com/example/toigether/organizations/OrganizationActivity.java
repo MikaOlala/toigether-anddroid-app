@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.toigether.FirebaseData;
+import com.example.toigether.Login;
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.example.toigether.items.Organization;
@@ -44,6 +46,7 @@ public class OrganizationActivity extends AppCompatActivity {
     private TextView name, content, rating;
     private Dialog dialog;
     private SharedPreferences prefs;
+    private String orgEmailId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +75,17 @@ public class OrganizationActivity extends AppCompatActivity {
                     choice = fragment.getChoice();
                 }
 
-                openDialog();
+                if (db.isAuthenticated())
+                    openDialog();
+                else
+                    openActivityLogin();
             }
         });
+    }
+
+    private void openActivityLogin() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
     }
 
     private void setOrganization(String id) {
@@ -88,6 +99,7 @@ public class OrganizationActivity extends AppCompatActivity {
                 name.setText(data.getName());
                 content.setText(data.getDescription());
                 rating.setText(String.valueOf(data.getRating()));
+                orgEmailId = data.getOrganizator_id();
             }
         });
     }
@@ -135,6 +147,8 @@ public class OrganizationActivity extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                db.doRequest(choice, orgEmailId);
+
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.toast,
                         (ViewGroup) findViewById(R.id.toast));
