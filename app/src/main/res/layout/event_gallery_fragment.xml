@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".events.EventGalleryFragment">
 
+    <TextView
+        android:id="@+id/noImages"
+        style="@style/header_black_little"
+        android:text="Кажется кто-то стеснительный и не захотел делиться фото!"
+        android:visibility="invisible"/>
+
     <GridView
         android:id="@+id/grid"
         android:layout_width="match_parent"

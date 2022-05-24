@@ -23,6 +23,7 @@ public class EventDecorationFragment extends Fragment {
         View view = inflater.inflate(R.layout.event_decoration_fragment, container, false);
 
         TextView decorations = view.findViewById(R.id.decorations);
+        TextView noDecotations = view.findViewById(R.id.noDecoration);
         String id = getArguments().getString("id");
         FirebaseData db = new FirebaseData();
 
@@ -32,8 +33,12 @@ public class EventDecorationFragment extends Fragment {
 
             @Override
             public void onSuccess(Event event) {
-                event.setDecorations(event.getDecorations().replace(", ", "\n"));
-                decorations.setText(event.getDecorations());
+                if (event.getDecorations()!=null) {
+                    event.setDecorations(event.getDecorations().replace(", ", "\n"));
+                    decorations.setText(event.getDecorations());
+                }
+                else
+                    noDecotations.setVisibility(View.VISIBLE);
             }
         });
 

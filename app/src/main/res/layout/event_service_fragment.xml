@@ -5,10 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".events.EventServiceFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/noService"
+        style="@style/header_black_little"
+        android:text="@string/no_service"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/services"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text=""
+        android:fontFamily="@font/montserrat_medium"
+        android:textSize="16sp"
+        android:textColor="#696969"/>
 
 </FrameLayout>

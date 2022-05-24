@@ -100,4 +100,6 @@
     <string name="back">Назад</string>
     <string name="no_menu">Стандартное меню или Меню отсутствовало</string>
     <string name="logout">Выйти</string>
+    <string name="no_service">Нет данных о заказанных услугах</string>
+    <string name="no_decoration">Нет данных о заказанных декорациях</string>
 </resources>

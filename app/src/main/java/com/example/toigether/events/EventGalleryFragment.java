@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
 import com.example.toigether.adapters.ImageAdapter;
 import com.example.toigether.items.Event;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public class EventGalleryFragment extends Fragment {
         View view = inflater.inflate(R.layout.event_gallery_fragment, container, false);
 
         Context context = getContext();
+        TextView noImages = view.findViewById(R.id.noImages);
         GridView grid = view.findViewById(R.id.grid);
         String id = getArguments().getString("id");
 
@@ -41,7 +45,10 @@ public class EventGalleryFragment extends Fragment {
 
                 @Override
                 public void onSuccess(Event event) {
-                    grid.setAdapter(new ImageAdapter(event.getImages(), context));
+                    if (event.getImages().size()!=0)
+                        grid.setAdapter(new ImageAdapter(event.getImages(), context));
+                    else
+                        noImages.setVisibility(View.VISIBLE);
                     dialog.cancel();
                 }
             });
