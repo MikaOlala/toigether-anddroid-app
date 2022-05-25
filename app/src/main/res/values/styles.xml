@@ -82,7 +82,7 @@
         <item name="textAllCaps">true</item>
     </style>
 
-    <!--    bold orange header - favourites - -->
+    <!--    bold orange header - favourites - home -->
     <style name="highlighted">
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:layout_width">wrap_content</item>

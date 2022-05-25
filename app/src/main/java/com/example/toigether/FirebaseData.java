@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.toigether.items.Category;
 import com.example.toigether.items.Event;
 import com.example.toigether.items.Organization;
 import com.example.toigether.items.Request;
@@ -65,6 +66,11 @@ public class FirebaseData {
     public interface OnGetUserListener {
         void onStart();
         void onSuccess(User user);
+    }
+
+    public interface OnGetCategoriesListener {
+        void onStart();
+        void onSuccess(ArrayList<Category> categories);
     }
 
     public void getOrganization(String id, final OnGetOneListener listener) {
@@ -207,6 +213,28 @@ public class FirebaseData {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Event event = documentSnapshot.toObject(Event.class);
                 listener.onSuccess(event);
+            }
+        });
+    }
+
+    public void getCategories(final OnGetCategoriesListener listener) {
+        listener.onStart();
+        ArrayList<Category> categories = new ArrayList<>();
+
+        db.collection("categories").orderBy("interestIndex", Query.Direction.DESCENDING)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Category category = document.toObject(Category.class);
+                        categories.add(category);
+                    }
+                }
+                else
+                    Log.e("FirebaseData", "getCategories task is not successful");
+
+                listener.onSuccess(categories);
             }
         });
     }
