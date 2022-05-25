@@ -17,9 +17,10 @@
             android:layout_height="91sp"
             app:cardCornerRadius="50sp">
             <ImageView
+                android:id="@+id/avatar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ex_avatar"
+                android:src="@drawable/user"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
 

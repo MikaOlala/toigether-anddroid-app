@@ -2,12 +2,14 @@ package com.example.toigether.ui;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,21 +19,27 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.toigether.FirebaseData;
+import com.example.toigether.Login;
+import com.example.toigether.Profile;
 import com.example.toigether.R;
 import com.example.toigether.WelcomePage;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.User;
 import com.example.toigether.organizations.OrganizationActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class FavouriteFragment extends Fragment {
 
-    private ArrayList<Organization> organizations = new ArrayList<>();
     private RecyclerView recyclerView;
     private CardAdapter adapter;
-    private FirebaseData db = new FirebaseData();
+    private final FirebaseData db = new FirebaseData();
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
     private Dialog dialog;
+    private ImageView avatar;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -39,7 +47,19 @@ public class FavouriteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favourite, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewFavourite);
+        avatar = view.findViewById(R.id.profileIcon);
+        View profile = view.findViewById(R.id.profile);
+
         setFavourite();
+        if (db.isAuthenticated())
+            setUser();
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivityProfile();
+            }
+        });
 
         return view;
     }
@@ -47,6 +67,15 @@ public class FavouriteFragment extends Fragment {
     public void openActivityOrganization(String id) {
         Intent intent = new Intent(getActivity(), OrganizationActivity.class);
         intent.putExtra("id", id);
+        startActivity(intent);
+    }
+
+    private void openActivityProfile() {
+        Intent intent;
+        if (db.isAuthenticated())
+            intent = new Intent(getActivity(), Profile.class);
+        else
+            intent = new Intent(getActivity(), Login.class);
         startActivity(intent);
     }
 
@@ -69,6 +98,20 @@ public class FavouriteFragment extends Fragment {
                 });
 
                 dialog.cancel();
+            }
+        });
+    }
+
+    // change this code with getArguments Parcelable
+    private void setUser() {
+        db.getUser(auth.getCurrentUser().getEmail(), new FirebaseData.OnGetUserListener() {
+            @Override
+            public void onStart() {}
+
+            @Override
+            public void onSuccess(User user) {
+                if (user.getAvatar()!=null)
+                    Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
             }
         });
     }

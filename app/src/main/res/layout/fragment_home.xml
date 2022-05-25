@@ -69,7 +69,7 @@
                             android:id="@+id/profileIcon"
                             android:layout_width="37sp"
                             android:layout_height="37sp"
-                            android:src="@drawable/ex_avatar"
+                            android:src="@drawable/user"
                             android:scaleType="centerCrop" />
                     </androidx.cardview.widget.CardView>
 

@@ -1,8 +1,12 @@
 package com.example.toigether.items;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class User {
+public class User implements Parcelable {
+    private String id;
     private String email;
     private String phone;
     private String name;
@@ -18,6 +22,35 @@ public class User {
     }
 
     public User() {
+    }
+
+    protected User(Parcel in) {
+        id = in.readString();
+        email = in.readString();
+        phone = in.readString();
+        name = in.readString();
+        avatar = in.readString();
+        favourite = in.createStringArrayList();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -59,4 +92,20 @@ public class User {
     public void setFavourite(ArrayList<String> favourite) {
         this.favourite = favourite;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(email);
+        parcel.writeString(phone);
+        parcel.writeString(name);
+        parcel.writeString(avatar);
+        parcel.writeList(favourite);
+    }
+
 }

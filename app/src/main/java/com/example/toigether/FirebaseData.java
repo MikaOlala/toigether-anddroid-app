@@ -1,17 +1,10 @@
 package com.example.toigether;
 
-import android.app.Dialog;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -27,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,11 +29,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
 public class FirebaseData {
-    private Organization organization = new Organization();
-    private final ArrayList<Organization> organizations = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
 
@@ -80,7 +71,7 @@ public class FirebaseData {
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                organization = documentSnapshot.toObject(Organization.class);
+                Organization organization = documentSnapshot.toObject(Organization.class);
                 listener.onSuccess(organization);
             }
         });
@@ -88,7 +79,7 @@ public class FirebaseData {
 
     public void getTopRating(final OnGetDataListener listener) {
         listener.onStart();
-
+        ArrayList<Organization> organizations = new ArrayList<>();
         db.collection("organizations").orderBy("rating", Query.Direction.DESCENDING).limit(5)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -110,7 +101,7 @@ public class FirebaseData {
 
     public void getOrganizationByCategory(String category, final OnGetDataListener listener) {
         listener.onStart();
-
+        ArrayList<Organization> organizations = new ArrayList<>();
         ArrayList<String> categories = new ArrayList<>();
         categories.add(category);
 
@@ -197,12 +188,22 @@ public class FirebaseData {
     public void createUser(String email, String phone) {
         String name = email.substring(0, email.indexOf('@'));
         db.collection("users").add(new User(email, phone, name, null, null))
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("createUser", e.toString());
-                    }
-                });
+            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Log.e("UserCreating", "success");
+                }
+            });
+    }
+
+    public void editAvatar(User user) {
+        db.collection("users").document(user.getId())
+                .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.e("AvatarUploading", "success");
+            }
+        });
     }
 
     public void getEvent(String id, final OnGetEventListener listener) {
@@ -254,6 +255,7 @@ public class FirebaseData {
                     User user = new User();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         user = document.toObject(User.class);
+                        user.setId(document.getId());
                     }
                     listener.onSuccess(user);
                 }
@@ -266,5 +268,4 @@ public class FirebaseData {
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         text.setText(content);
     }
-
 }
