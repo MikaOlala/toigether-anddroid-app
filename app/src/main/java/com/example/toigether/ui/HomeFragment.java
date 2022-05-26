@@ -106,8 +106,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onSuccess(User user) {
-                if (user.getAvatar()!=null)
-                    Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                if (user.getAvatar()!=null) {
+                    if(user.getAvatar().length()!=0)
+                        Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                }
             }
         });
     }

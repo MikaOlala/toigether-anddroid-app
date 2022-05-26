@@ -48,7 +48,9 @@
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/program_list.xml" value="0.3944746376811594" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/service_list.xml" value="0.4" />
         <entry key="..\:/Images/domashka/4th-course-2-sem/projects/toigether-anddroid-app/app/src/main/res/layout/toast.xml" value="0.3944746376811594" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable-v24/heart_empty.xml" value="0.123" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable/heart.xml" value="0.1525" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable/heart_emp.xml" value="0.123" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/drawable/welcome_page_button.xml" value="0.1675" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/activity_navigation.xml" value="0.25416666666666665" />
@@ -57,6 +59,7 @@
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/card_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/card_item_generation_results.xml" value="0.2" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/event_menu_fragment.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_calendar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_favourite.xml" value="0.264" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_generation.xml" value="0.2" />

@@ -196,7 +196,7 @@
     <style name="heart">
         <item name="android:layout_width">15sp</item>
         <item name="android:layout_height">15sp</item>
-        <item name="android:src">@drawable/heart</item>
+        <item name="android:src">@drawable/heart_empty</item>
     </style>
 
     <!--    card_item_generation_results - organization-->

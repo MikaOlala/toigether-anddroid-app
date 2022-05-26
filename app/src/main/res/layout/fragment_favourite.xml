@@ -55,4 +55,13 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="14sp"
         android:scrollbars="none" />
+
+    <TextView
+            android:id="@+id/noFavourite"
+            style="@style/header_black_little"
+            android:text="@string/addFavourite"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="30sp"
+            android:visibility="invisible"/>
 </LinearLayout>

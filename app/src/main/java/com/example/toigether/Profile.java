@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -94,8 +95,10 @@ public class Profile extends AppCompatActivity {
 
                 name.setText(user.getName());
                 phone.setText(number);
-                if (user.getAvatar()!=null)
-                    Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                if (user.getAvatar()!=null) {
+                    if(user.getAvatar().length()!=0)
+                        Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                }
             }
         });
     }

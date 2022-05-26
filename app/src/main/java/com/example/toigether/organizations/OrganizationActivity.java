@@ -30,7 +30,9 @@ import com.example.toigether.Login;
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.User;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
@@ -42,11 +44,13 @@ public class OrganizationActivity extends AppCompatActivity {
 
     private final FirebaseData db = new FirebaseData();
     private ArrayList<String> choice;
-    private ImageView pic;
+    private ImageView pic, heart;
     private TextView name, content, rating;
     private Dialog dialog;
     private SharedPreferences prefs;
     private String orgEmailId;
+    private boolean isFavourite = false;
+    private User userObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +64,13 @@ public class OrganizationActivity extends AppCompatActivity {
         name = findViewById(R.id.orgName);
         content = findViewById(R.id.orgContent);
         rating = findViewById(R.id.rating);
+        heart = findViewById(R.id.heart);
         Button meeting = findViewById(R.id.makeMeeting);
 
         setTab();
         setOrganization(value);
+        if (db.isAuthenticated())
+            setFavourite(value);
 
         meeting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +86,29 @@ public class OrganizationActivity extends AppCompatActivity {
                     openDialog();
                 else
                     openActivityLogin();
+            }
+        });
+        
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!db.isAuthenticated())
+                    openActivityLogin();
+                else {
+                    if(isFavourite) {
+                        heart.setImageResource(R.drawable.heart_empty);
+                        ArrayList<String> favourites = userObject.getFavourite();
+                        favourites.remove(value);
+                        userObject.setFavourite(favourites);
+                        isFavourite = false;
+                    }
+                    else {
+                        heart.setImageResource(R.drawable.heart);
+                        userObject.getFavourite().add(value);
+                        isFavourite = true;
+                    }
+                    db.changeFavourite(userObject);
+                }
             }
         });
     }
@@ -100,6 +130,25 @@ public class OrganizationActivity extends AppCompatActivity {
                 content.setText(data.getDescription());
                 rating.setText(String.valueOf(data.getRating()));
                 orgEmailId = data.getOrganizator_id();
+            }
+        });
+    }
+
+    private void setFavourite(String id) {
+        db.getUser(db.getCurrentUserEmail(), new FirebaseData.OnGetUserListener() {
+            @Override
+            public void onStart() {}
+
+            @Override
+            public void onSuccess(User user) {
+                userObject = user;
+                if (user.getFavourite()!=null) {
+                    for (String org : user.getFavourite())
+                        if (org.equals(id)) {
+                            heart.setImageResource(R.drawable.heart);
+                            isFavourite = true;
+                        }
+                }
             }
         });
     }

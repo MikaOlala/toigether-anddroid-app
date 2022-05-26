@@ -48,6 +48,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 @Override
                 public void onClick(View view) {
                     if(listener != null) {
+                        Log.e("pressed", view.getResources().getResourceEntryName(view.getId()));
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);

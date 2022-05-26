@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,9 +38,9 @@ public class FavouriteFragment extends Fragment {
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private final FirebaseData db = new FirebaseData();
-    private FirebaseAuth auth = FirebaseAuth.getInstance();
     private Dialog dialog;
     private ImageView avatar;
+    private TextView noFavourite;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -49,8 +50,8 @@ public class FavouriteFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewFavourite);
         avatar = view.findViewById(R.id.profileIcon);
         View profile = view.findViewById(R.id.profile);
+        noFavourite = view.findViewById(R.id.noFavourite);
 
-        setFavourite();
         if (db.isAuthenticated())
             setUser();
 
@@ -79,24 +80,24 @@ public class FavouriteFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void setFavourite() {
-        db.getTopRating(new FirebaseData.OnGetDataListener() {
+    private void setFavourite(User user) {
+        db.getFavouriteList(user, new FirebaseData.OnGetDataListener() {
             @Override
-            public void onStart() {
-                openDialog();
-            }
+            public void onStart() {}
 
             @Override
             public void onSuccess(ArrayList<Organization> data) {
-                setAdapter(data);
-
-                adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
-                    @Override
-                    public void onItemClick(int position) {
-                        openActivityOrganization(data.get(position).getId());
-                    }
-                });
-
+                if (data.size()==0)
+                    noFavourite.setVisibility(View.VISIBLE);
+                else {
+                    setAdapter(data);
+                    adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            openActivityOrganization(data.get(position).getId());
+                        }
+                    });
+                }
                 dialog.cancel();
             }
         });
@@ -104,14 +105,23 @@ public class FavouriteFragment extends Fragment {
 
     // change this code with getArguments Parcelable
     private void setUser() {
-        db.getUser(auth.getCurrentUser().getEmail(), new FirebaseData.OnGetUserListener() {
+        db.getUser(db.getCurrentUserEmail(), new FirebaseData.OnGetUserListener() {
             @Override
-            public void onStart() {}
+            public void onStart() {
+                openDialog();
+            }
 
             @Override
             public void onSuccess(User user) {
-                if (user.getAvatar()!=null)
-                    Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                if (user.getAvatar()!=null) {
+                    if(user.getAvatar().length()!=0)
+                        Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
+                }
+
+                if (user.getFavourite() != null || user.getFavourite().size()>0)
+                    setFavourite(user);
+                else
+                    noFavourite.setVisibility(View.VISIBLE);
             }
         });
     }

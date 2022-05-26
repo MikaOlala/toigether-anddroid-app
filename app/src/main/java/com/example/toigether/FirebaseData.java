@@ -201,7 +201,17 @@ public class FirebaseData {
                 .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Log.e("AvatarUploading", "success");
+                Log.i("AvatarUploading", "success");
+            }
+        });
+    }
+    
+    public void changeFavourite(User user) {
+        db.collection("users").document(user.getId())
+                .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.i("addingToFavourite", "success");    
             }
         });
     }
@@ -261,6 +271,28 @@ public class FirebaseData {
                 }
             }
         });
+    }
+    
+    public void getFavouriteList(User user, final OnGetDataListener listener) {
+        listener.onStart();
+        ArrayList<Organization> organizations = new ArrayList<>();
+        int indicator = user.getFavourite().size();
+        for (String org : user.getFavourite()) {
+            db.collection("organizations").document(org)
+                    .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    Organization organization = documentSnapshot.toObject(Organization.class);
+                    organizations.add(organization);
+                    if (organizations.size()==indicator)  // stupid firebase
+                        listener.onSuccess(organizations);
+                }
+            });
+        }
+    }
+
+    public String getCurrentUserEmail() {
+        return auth.getCurrentUser().getEmail();
     }
 
     public void makeTextUnderlined(TextView text) {
