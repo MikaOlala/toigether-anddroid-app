@@ -56,6 +56,7 @@
         <ImageView
             style="@style/heart"
             android:id="@+id/heart"
+            android:src="@drawable/heart"
             android:layout_marginTop="32sp"
             app:layout_constraintLeft_toRightOf="@+id/textColumn"
             app:layout_constraintTop_toTopOf="parent" />

@@ -95,19 +95,13 @@ public class OrganizationActivity extends AppCompatActivity {
                 if (!db.isAuthenticated())
                     openActivityLogin();
                 else {
-                    if(isFavourite) {
+                    if(isFavourite)
                         heart.setImageResource(R.drawable.heart_empty);
-                        ArrayList<String> favourites = userObject.getFavourite();
-                        favourites.remove(value);
-                        userObject.setFavourite(favourites);
-                        isFavourite = false;
-                    }
-                    else {
+                    else
                         heart.setImageResource(R.drawable.heart);
-                        userObject.getFavourite().add(value);
-                        isFavourite = true;
-                    }
-                    db.changeFavourite(userObject);
+
+                    db.changeFavourite(userObject, isFavourite, value);
+                    isFavourite = !isFavourite;
                 }
             }
         });

@@ -21,14 +21,22 @@ import java.util.ArrayList;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
     private ArrayList<Organization> organizations;
     private onItemClickListener listener;
+    private onItemClickFavourite heartListener;
     private String variant;
 
     public interface onItemClickListener {
         void onItemClick(int position);
     }
+    
+    public interface onItemClickFavourite {
+        void onItemClickHeart(int position, boolean isFavourite);
+    }
 
     public void setOnItemClickListener(onItemClickListener listener) {
         this.listener = listener;
+    }
+    public void setOnItemClickFavourite(onItemClickFavourite heartListener) {
+        this.heartListener = heartListener;
     }
 
     public static class CardViewHolder extends RecyclerView.ViewHolder {
@@ -36,19 +44,39 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         public TextView title;
         public TextView text;
         public TextView rating;
+        public ImageView heart;
+        public boolean isFavourite = true;
 
-        public CardViewHolder(@NonNull View itemView, onItemClickListener listener) {
+        public CardViewHolder(@NonNull View itemView, onItemClickListener listener, onItemClickFavourite heartListener) {
             super(itemView);
             image = itemView.findViewById(R.id.organizationImg);
             title = itemView.findViewById(R.id.organizationTitle);
             text = itemView.findViewById(R.id.organizationText);
             rating = itemView.findViewById(R.id.rating);
+            heart = itemView.findViewById(R.id.heart);
+            
+            heart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(heartListener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            heartListener.onItemClickHeart(position, isFavourite);
+                            if (isFavourite)
+                                heart.setImageResource(R.drawable.heart_empty);
+                            else
+                                heart.setImageResource(R.drawable.heart);
 
+                            isFavourite = !isFavourite;
+                        }
+                    }
+                }
+            });
+            
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(listener != null) {
-                        Log.e("pressed", view.getResources().getResourceEntryName(view.getId()));
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
@@ -82,7 +110,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 throw new IllegalStateException("Unexpected value: " + variant); // Add here cards from main menu
         }
 
-        CardViewHolder cardViewHolder = new CardViewHolder(v, listener);
+        CardViewHolder cardViewHolder = new CardViewHolder(v, listener, heartListener);
         return cardViewHolder;
     }
 
@@ -95,6 +123,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         holder.text.setText(organization.getDescription());
         if (!variant.equals("favourite"));
             holder.rating.setText(String.valueOf(organization.getRating()));
+        if (variant.equals("main") || variant.equals("generation"))
+            holder.heart.setImageResource(R.drawable.heart);
     }
 
     @Override

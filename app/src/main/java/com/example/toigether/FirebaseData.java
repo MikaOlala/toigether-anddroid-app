@@ -206,7 +206,15 @@ public class FirebaseData {
         });
     }
     
-    public void changeFavourite(User user) {
+    public void changeFavourite(User user, boolean isFavourite, String id) {
+        if(isFavourite) {
+            ArrayList<String> favourites = user.getFavourite();
+            favourites.remove(id);
+            user.setFavourite(favourites);
+        }
+        else
+            user.getFavourite().add(id);
+
         db.collection("users").document(user.getId())
                 .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -283,6 +291,7 @@ public class FirebaseData {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     Organization organization = documentSnapshot.toObject(Organization.class);
+                    organization.setId(org);
                     organizations.add(organization);
                     if (organizations.size()==indicator)  // stupid firebase
                         listener.onSuccess(organizations);

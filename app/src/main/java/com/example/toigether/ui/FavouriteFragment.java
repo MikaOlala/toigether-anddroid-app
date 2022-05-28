@@ -97,6 +97,12 @@ public class FavouriteFragment extends Fragment {
                             openActivityOrganization(data.get(position).getId());
                         }
                     });
+                    adapter.setOnItemClickFavourite(new CardAdapter.onItemClickFavourite() {
+                        @Override
+                        public void onItemClickHeart(int position, boolean isFavourite) {
+                            db.changeFavourite(user, isFavourite, data.get(position).getId());
+                        }
+                    });
                 }
                 dialog.cancel();
             }

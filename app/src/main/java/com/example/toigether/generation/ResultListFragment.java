@@ -21,6 +21,7 @@ import com.example.toigether.FirebaseData;
 import com.example.toigether.R;
 import com.example.toigether.adapters.CardAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.User;
 import com.example.toigether.organizations.OrganizationActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -37,6 +38,7 @@ public class ResultListFragment extends Fragment {
     private ArrayList<Organization> organizationsByCategory = new ArrayList<>();
     private Dialog dialog;
     private TextView header;
+    private User userObject;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +51,7 @@ public class ResultListFragment extends Fragment {
         db.makeTextUnderlined(sortBy);
 
         getOrganizations();
+        setUser();
 
         return view;
     }
@@ -119,6 +122,18 @@ public class ResultListFragment extends Fragment {
                         dialog.cancel();
                     }
                 });
+            }
+        });
+    }
+
+    private void setUser() {
+        db.getUser(db.getCurrentUserEmail(), new FirebaseData.OnGetUserListener() {
+            @Override
+            public void onStart() {}
+
+            @Override
+            public void onSuccess(User user) {
+
             }
         });
     }
