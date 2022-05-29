@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,6 +31,7 @@ import com.example.toigether.Login;
 import com.example.toigether.R;
 import com.example.toigether.adapters.TLGenerationAdapter;
 import com.example.toigether.items.Organization;
+import com.example.toigether.items.Request;
 import com.example.toigether.items.User;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +40,9 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class OrganizationActivity extends AppCompatActivity {
 
@@ -169,6 +173,8 @@ public class OrganizationActivity extends AppCompatActivity {
 
         TextView cancel = dialog.findViewById(R.id.cancel);
         Button call = dialog.findViewById(R.id.call);
+        Button telegram = dialog.findViewById(R.id.telegram);
+        Button whatsapp = dialog.findViewById(R.id.whatsapp);
         ListView list = dialog.findViewById(R.id.servicesList);
 
         Gson gson = new Gson();
@@ -187,30 +193,50 @@ public class OrganizationActivity extends AppCompatActivity {
 
         dialog.show();
 
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String dateStr = sdf.format(date);
+
+        String strServices = TextUtils.join(", ", choice);
+
+        Request request = new Request(userObject.getEmail(), userObject.getPhone(), orgEmailId, strServices, dateStr);
+
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.doRequest(choice, orgEmailId);
-
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.toast,
-                        (ViewGroup) findViewById(R.id.toast));
-
-                Toast toast = new Toast(getApplicationContext());
-                toast.setGravity(Gravity.TOP, 0, 30);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
-
-                dialog.cancel();
+                request.setCommunicationMethod("Созвониться");
+                doRequestAndToast(request);
             }
         });
-
+        telegram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request.setCommunicationMethod("Telegram");
+                doRequestAndToast(request);
+            }
+        });
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request.setCommunicationMethod("WhatsApp");
+                doRequestAndToast(request);
+            }
+        });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
             }
         });
+    }
+
+    private void doRequestAndToast (Request request) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast,
+                (ViewGroup) findViewById(R.id.toast));
+
+        db.doRequest(request);
+        db.openToast(layout, getApplicationContext());
+        dialog.cancel();
     }
 }

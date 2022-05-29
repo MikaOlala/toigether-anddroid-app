@@ -62,6 +62,7 @@
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/card_item_home_category.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/card_item_main_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/card_item_portfolio.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/dialog_make_meeting.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/event_menu_fragment.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_calendar.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_favourite.xml" value="0.264" />
@@ -70,8 +71,10 @@
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_meeting.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/fragment_tab_layout.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/home_fragment.xml" value="0.1308876811594203" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/org_program_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/program_list.xml" value="0.264" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/side_menu_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/layout/welcome_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mika/important/projects/toigether-android-app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />

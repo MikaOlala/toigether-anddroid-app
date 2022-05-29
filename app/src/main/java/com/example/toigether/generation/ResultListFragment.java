@@ -36,7 +36,6 @@ public class ResultListFragment extends Fragment {
     private CardAdapter adapter;
     private final FirebaseData db = new FirebaseData();
     private ArrayList<Organization> organizationsByCategory = new ArrayList<>();
-    private Dialog dialog;
     private TextView header;
     private User userObject;
 
@@ -85,7 +84,7 @@ public class ResultListFragment extends Fragment {
 
             @Override
             public void onStart() {
-                openDialog();
+                db.openDialog(getContext());
             }
 
             @Override
@@ -119,7 +118,7 @@ public class ResultListFragment extends Fragment {
                                 }
                             });
                         }
-                        dialog.cancel();
+                        db.closeDialog();
                     }
                 });
             }
@@ -147,16 +146,7 @@ public class ResultListFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        Log.e("CardAdapter", String.valueOf(organizations.size()));
-    }
-
-    private void openDialog() {
-        dialog = new Dialog(this.getContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
-        dialog.setContentView(R.layout.dialog_loading);
-
-        dialog.show();
+        Log.i("CardAdapter", String.valueOf(organizations.size()));
     }
 
     private void changeHeader() {

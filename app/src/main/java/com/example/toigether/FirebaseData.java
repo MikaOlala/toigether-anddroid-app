@@ -1,10 +1,18 @@
 package com.example.toigether;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -12,6 +20,7 @@ import com.example.toigether.items.Category;
 import com.example.toigether.items.Event;
 import com.example.toigether.items.Organization;
 import com.example.toigether.items.Request;
+import com.example.toigether.items.Service;
 import com.example.toigether.items.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,6 +42,7 @@ import java.util.ArrayList;
 public class FirebaseData {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
+    private Dialog dialog;
 
     public interface OnGetDataListener {
         void onStart();
@@ -62,6 +72,11 @@ public class FirebaseData {
     public interface OnGetCategoriesListener {
         void onStart();
         void onSuccess(ArrayList<Category> categories);
+    }
+
+    public interface OnGetServicesListener {
+        void onStart();
+        void onSuccess(ArrayList<Service> services);
     }
 
     public void getOrganization(String id, final OnGetOneListener listener) {
@@ -125,6 +140,27 @@ public class FirebaseData {
         });
     }
 
+    public void getOrgServicesById(String orgId, final OnGetServicesListener listener) {
+        listener.onStart();
+        ArrayList<Service> services = new ArrayList<>();
+        db.collection("services").whereEqualTo("organizator_id", orgId)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Service service = document.toObject(Service.class);
+                        services.add(service);
+                    }
+                }
+                else
+                    Log.i("getServices", "failed");
+                
+                listener.onSuccess(services);
+            }
+        });
+    }
+
     public void getOrganizationsByParameter(String parameter, String city, ArrayList<String> attribute, final OnGetDataListener listener) {
         listener.onStart();
 
@@ -172,11 +208,8 @@ public class FirebaseData {
         });
     }
 
-    public void doRequest(ArrayList<String> services, String organization) {
-        FirebaseUser user = auth.getCurrentUser();
-        String strServices = TextUtils.join(", ", services);
-
-        db.collection("request").add(new Request(user.getEmail(), organization, strServices))
+    public void doRequest(Request request) {
+        db.collection("request").add(request)
         .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
@@ -308,5 +341,26 @@ public class FirebaseData {
         SpannableString content = new SpannableString(text.getText().toString());
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
         text.setText(content);
+    }
+
+    public void openDialog(Context context) {
+        dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        dialog.setContentView(R.layout.dialog_loading);
+
+        dialog.show();
+    }
+
+    public void openToast(View layout, Context context) {
+        Toast toast = new Toast(context);
+        toast.setGravity(Gravity.TOP, 0, 30);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+    }
+
+    public void closeDialog() {
+        dialog.cancel();
     }
 }

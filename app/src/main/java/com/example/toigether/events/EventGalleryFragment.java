@@ -1,16 +1,13 @@
 package com.example.toigether.events;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -19,14 +16,9 @@ import com.example.toigether.R;
 import com.example.toigether.adapters.ImageAdapter;
 import com.example.toigether.items.Event;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 public class EventGalleryFragment extends Fragment {
 
-    private FirebaseData db = new FirebaseData();
-    private Dialog dialog;
+    private final FirebaseData db = new FirebaseData();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +33,7 @@ public class EventGalleryFragment extends Fragment {
         if (id!=null) {
             db.getEvent(id, new FirebaseData.OnGetEventListener() {
                 @Override
-                public void onStart() {openDialog();}
+                public void onStart() {db.openDialog(getContext());}
 
                 @Override
                 public void onSuccess(Event event) {
@@ -49,20 +41,11 @@ public class EventGalleryFragment extends Fragment {
                         grid.setAdapter(new ImageAdapter(event.getImages(), context));
                     else
                         noImages.setVisibility(View.VISIBLE);
-                    dialog.cancel();
+                    db.closeDialog();
                 }
             });
         }
 
         return view;
-    }
-
-    private void openDialog() {
-        dialog = new Dialog(this.getContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
-        dialog.setContentView(R.layout.dialog_loading);
-
-        dialog.show();
     }
 }
