@@ -1,13 +1,11 @@
 package com.example.toigether.ui;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -87,6 +85,7 @@ public class FavouriteFragment extends Fragment {
             public void onSuccess(ArrayList<Organization> data) {
                 if (data.size()==0)
                     noFavourite.setVisibility(View.VISIBLE);
+
                 else {
                     setAdapter(data);
                     adapter.setOnItemClickListener(new CardAdapter.onItemClickListener() {
@@ -122,7 +121,7 @@ public class FavouriteFragment extends Fragment {
                         Picasso.get().load(Uri.parse(user.getAvatar())).into(avatar);
                 }
 
-                if (user.getFavourite() != null)
+                if (user.getFavourite() != null && user.getFavourite().size()!=0)
                     setFavourite(user);
                 else {
                     noFavourite.setVisibility(View.VISIBLE);

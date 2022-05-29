@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerCategory;
     private CardAdapter adapterRating;
     private CardAdapter adapterRecently;
+    private CardAdapterCategories adapterCategories;
     private ImageView avatar;
     private final FirebaseData db = new FirebaseData();
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -97,6 +98,12 @@ public class HomeFragment extends Fragment {
     public void openActivityLogin() {
         Intent intent = new Intent(getActivity(), Login.class);
         startActivity(intent);
+    }
+
+    public void openFragmentSearch(View view, String category) {
+        Bundle bundle = new Bundle();
+        bundle.putString("category", category);
+        Navigation.findNavController(view).navigate(R.id.navigation_search, bundle);
     }
 
     private void setAvatar() {
@@ -155,6 +162,15 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onSuccess(ArrayList<Category> categories) {
                     setAdapterCategory(categories);
+                    adapterCategories.setOnItemClickListener(new CardAdapterCategories.onItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+//                            categories.get(position).setInterestIndex(categories.get(position).getInterestIndex() + 1);
+                            db.plusInterestToCategory(categories.get(position));
+                            Fragment fragment = HomeFragment.this;
+                            openFragmentSearch(fragment.getView(), categories.get(position).getName());
+                        }
+                    });
                 }
             });
     }
@@ -182,7 +198,7 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager;
         recyclerCategory.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        CardAdapterCategories adapterCategories = new CardAdapterCategories(categories);
+        adapterCategories = new CardAdapterCategories(categories);
         recyclerCategory.setLayoutManager(layoutManager);
         recyclerCategory.setAdapter(adapterCategories);
 

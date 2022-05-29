@@ -114,6 +114,27 @@ public class FirebaseData {
         });
     }
 
+    public void getOrganizationByName(String name, final OnGetDataListener listener) {
+        listener.onStart();
+        ArrayList<Organization> organizations = new ArrayList<>();
+        db.collection("organizations").whereEqualTo("name", name)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Organization organization = document.toObject(Organization.class);
+                        organization.setId(document.getId());
+                        organizations.add(organization);
+                    }
+                }
+                else
+                    Log.e("search by Name", "error");
+                listener.onSuccess(organizations);
+            }
+        });
+    }
+
     public void getOrganizationByCategory(String category, final OnGetDataListener listener) {
         listener.onStart();
         ArrayList<Organization> organizations = new ArrayList<>();
@@ -231,30 +252,38 @@ public class FirebaseData {
 
     public void editAvatar(User user) {
         db.collection("users").document(user.getId())
-                .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.i("AvatarUploading", "success");
-            }
-        });
+                .update(
+                        "avatar", user.getAvatar()
+                );
     }
     
     public void changeFavourite(User user, boolean isFavourite, String id) {
-        if(isFavourite) {
-            ArrayList<String> favourites = user.getFavourite();
-            favourites.remove(id);
+        if (user.getFavourite()==null) {
+            ArrayList<String> favourites = new ArrayList<>();
+            favourites.add(id);
             user.setFavourite(favourites);
         }
-        else
-            user.getFavourite().add(id);
+        else {
+            if(isFavourite) {
+                ArrayList<String> favourites = user.getFavourite();
+                favourites.remove(id);
+                user.setFavourite(favourites);
+            }
+            else
+                user.getFavourite().add(id);
+        }
 
         db.collection("users").document(user.getId())
-                .set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Log.i("addingToFavourite", "success");    
-            }
-        });
+                .update(
+                        "favourite", user.getFavourite()
+                );
+    }
+
+    public void plusInterestToCategory(Category category) {
+        db.collection("categories").document(category.getId())
+            .update(
+                "interestIndex", category.getInterestIndex() + 1
+            );
     }
 
     public void getEvent(String id, final OnGetEventListener listener) {
@@ -280,6 +309,7 @@ public class FirebaseData {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Category category = document.toObject(Category.class);
+                        category.setId(document.getId());
                         categories.add(category);
                     }
                 }
