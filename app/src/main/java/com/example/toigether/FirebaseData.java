@@ -258,18 +258,16 @@ public class FirebaseData {
     }
     
     public void changeFavourite(User user, boolean isFavourite, String id) {
-        if (user.getFavourite()==null) {
+        if (user.getFavourite() == null) {
             ArrayList<String> favourites = new ArrayList<>();
             favourites.add(id);
             user.setFavourite(favourites);
-        }
-        else {
-            if(isFavourite) {
+        } else {
+            if (isFavourite) {
                 ArrayList<String> favourites = user.getFavourite();
                 favourites.remove(id);
                 user.setFavourite(favourites);
-            }
-            else
+            } else
                 user.getFavourite().add(id);
         }
 
@@ -277,6 +275,7 @@ public class FirebaseData {
                 .update(
                         "favourite", user.getFavourite()
                 );
+
     }
 
     public void plusInterestToCategory(Category category) {

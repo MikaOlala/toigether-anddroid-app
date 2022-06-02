@@ -89,7 +89,7 @@ public class OrganizationActivity extends AppCompatActivity {
                 if (db.isAuthenticated())
                     openDialog();
                 else
-                    openActivityLogin();
+                    openActivityLogin(value);
             }
         });
         
@@ -97,7 +97,7 @@ public class OrganizationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!db.isAuthenticated())
-                    openActivityLogin();
+                    openActivityLogin(value);
                 else {
                     if(isFavourite)
                         heart.setImageResource(R.drawable.heart_empty);
@@ -111,9 +111,11 @@ public class OrganizationActivity extends AppCompatActivity {
         });
     }
 
-    private void openActivityLogin() {
+    private void openActivityLogin(String orgId) {
         Intent intent = new Intent(this, Login.class);
+        intent.putExtra("orgId", orgId);
         startActivity(intent);
+        finish();
     }
 
     private void setOrganization(String id) {

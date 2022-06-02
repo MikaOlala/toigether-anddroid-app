@@ -66,7 +66,7 @@
             android:drawableStart="@drawable/ic_user"
             android:drawablePadding="21sp"
             android:fontFamily="@font/geometria"
-            android:hint="@string/user_name"
+            android:hint="@string/user_email"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:textColor="@color/white"

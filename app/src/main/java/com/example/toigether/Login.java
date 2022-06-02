@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.toigether.organizations.OrganizationActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -17,9 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
-    FirebaseData db = new FirebaseData();
-    EditText login, password;
-    TextView warning;
+    private final FirebaseData db = new FirebaseData();
+    private EditText login, password;
+    private TextView warning;
+    private String orgId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class Login extends AppCompatActivity {
         Button enter = findViewById(R.id.enter);
 
         db.makeTextUnderlined(restoreText);
+
+        if (getIntent().getExtras()!=null)
+            orgId = getIntent().getExtras().getString("orgId");
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +81,11 @@ public class Login extends AppCompatActivity {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful())
+                    if(task.isSuccessful()) {
+                        if (orgId != null)
+                            openActivityOrganization(orgId);
                         finish();
+                    }
                     else {
                         warning.setText(getResources().getString(R.string.password_error));
                         warning.setVisibility(View.VISIBLE);
@@ -85,5 +93,11 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public void openActivityOrganization(String id) {
+        Intent intent = new Intent(this, OrganizationActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }
