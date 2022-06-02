@@ -14,18 +14,21 @@ public class Organization{
 
     private float rating;
     private String town;
+    private int budget;
+    private String location;
     private String organizator_id;
     private ArrayList<String> gen_services;
     private ArrayList<String> categories;
 
-    public Organization(String id, String name, String description, String image, float rating, String town, String organizator_id,
-                        ArrayList<String> gen_services, ArrayList<String> categories) {
+    public Organization(String id, String name, String description, String image, float rating, String town, int budget, String location, String organizator_id, ArrayList<String> gen_services, ArrayList<String> categories) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
         this.rating = rating;
         this.town = town;
+        this.budget = budget;
+        this.location = location;
         this.organizator_id = organizator_id;
         this.gen_services = gen_services;
         this.categories = categories;
@@ -78,6 +81,22 @@ public class Organization{
 
     public void setTown(String town) {
         this.town = town;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getOrganizator_id() {

@@ -40,12 +40,15 @@ import java.util.ArrayList;
 public class TabLayoutFragment extends Fragment {
 
     private ViewPager viewPager;
+    private SharedPreferences prefs;
 
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_layout, container, false);
+
+        prefs = this.getActivity().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
 
         Button next = view.findViewById(R.id.next);
         Button makeGen = view.findViewById(R.id.makeGen);
@@ -66,10 +69,8 @@ public class TabLayoutFragment extends Fragment {
 
         HorizontalScrollView scroll = view.findViewById(R.id.scroll);
         int scrollWidth = stepView.getContext().getResources().getDisplayMetrics().widthPixels;
-        
-//        TabLayout tabLayout = view.findViewById(R.id.tabLayoutGeneration);
+
         viewPager = view.findViewById(R.id.pagerGeneration);
-//        tabLayout.setupWithViewPager(viewPager);
 
         TLGenerationAdapter tlGenerationAdapter = new TLGenerationAdapter(getParentFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         tlGenerationAdapter.addFragment(new DateGenerationFragment(), "1");
@@ -117,6 +118,8 @@ public class TabLayoutFragment extends Fragment {
                     next.setVisibility(ViewGroup.INVISIBLE);
                     makeGen.setVisibility(View.VISIBLE);
                     change.setVisibility(View.VISIBLE);
+
+                    makeGen.setEnabled(necessaryChosen());
                 }
                 else {
                     next.setVisibility(ViewGroup.VISIBLE);
@@ -151,5 +154,15 @@ public class TabLayoutFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private boolean necessaryChosen() {
+        int indicator = 0;
+        if (prefs.getString("city", null)!=null)
+            indicator++;
+        if (prefs.getString("quantityOfServices", null)!=null)
+            indicator++;
+
+        return indicator == 2;
     }
 }

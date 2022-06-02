@@ -11,8 +11,7 @@
         android:id="@+id/resultHeader"
         style="@style/highlighted_thin"
         android:layout_width="271sp"
-        android:text="@string/generation_results_header"
-        android:layout_marginTop="30sp"/>
+        android:text="@string/generation_results_header" />
 
     <LinearLayout
         android:layout_width="wrap_content"

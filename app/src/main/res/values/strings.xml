@@ -103,4 +103,5 @@
     <string name="no_service">Нет данных о заказанных услугах</string>
     <string name="no_decoration">Нет данных о заказанных декорациях</string>
     <string name="addFavourite">Добавляйте организации в избранные и следите за их обновлениями!</string>
+    <string name="not_found">К сожалению, ничего не нашлось</string>
 </resources>

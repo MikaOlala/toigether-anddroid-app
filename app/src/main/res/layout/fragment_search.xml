@@ -28,4 +28,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    <TextView
+            android:id="@+id/notFound"
+            style="@style/header_black_little"
+            android:text="@string/not_found"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="30sp"
+            android:visibility="invisible"/>
+
 </LinearLayout>

@@ -50,6 +50,8 @@ public class ResultGenerationFragment extends Fragment {
         String result = "";
         if(data == null) {
             result = "Не выбрано";
+            if (variable.equals("city") || variable.equals("quantityOfServices"))
+                result = result + " - Обязательно";
         }
         else {
             if (variable.equals("quantityOfServices")) {

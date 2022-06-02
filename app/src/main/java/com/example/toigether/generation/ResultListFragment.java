@@ -35,22 +35,25 @@ public class ResultListFragment extends Fragment {
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private final FirebaseData db = new FirebaseData();
+    private SharedPreferences prefs;
     private ArrayList<Organization> organizationsByCategory = new ArrayList<>();
     private TextView header;
-    private User userObject;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_result_list, container, false);
 
+        prefs = getContext().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+        
         recyclerView = view.findViewById(R.id.recyclerViewGeneration);
         TextView sortBy = view.findViewById(R.id.sortBy);
         header = view.findViewById(R.id.resultHeader);
         db.makeTextUnderlined(sortBy);
 
         getOrganizations();
-        setUser();
+        if (db.isAuthenticated())
+            setUser();
 
         return view;
     }
@@ -62,13 +65,11 @@ public class ResultListFragment extends Fragment {
     }
 
     private void getOrganizations() {
-        SharedPreferences prefs = getContext().getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
-
         String category = getArguments().getString("categoryName");
         ArrayList<String> categories = new ArrayList<>();
         categories.add(category);
 
-        String city = prefs.getString("city", null); // null if statement in query
+        String city = prefs.getString("city", null);
 
         ArrayList<String> services = new ArrayList<>();
         Gson gson = new Gson();
@@ -147,6 +148,28 @@ public class ResultListFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         Log.i("CardAdapter", String.valueOf(organizations.size()));
+    }
+    
+    private void clearByAnotherParameters() {
+        String userLocation = prefs.getString("location", null);
+        String userBudget = prefs.getString("budget", null);
+        if (userBudget!=null) {
+            int from = Integer.parseInt(userBudget) - 500000;
+            if (from<0)
+                from = 0;
+            
+            int to = Integer.parseInt(userBudget) + 500000;
+            if (to>10000000)
+                to = 10000000;
+
+            for (Organization org : organizationsByCategory) {
+                if (!(from <= org.getBudget() && org.getBudget() <= to))
+                    organizationsByCategory.remove(org);
+            }
+        }
+        if (userLocation!=null) {
+            organizationsByCategory.removeIf(org -> !userLocation.equals(org.getLocation()));
+        }
     }
 
     private void changeHeader() {
